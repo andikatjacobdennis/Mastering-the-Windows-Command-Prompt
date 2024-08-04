@@ -1,9 +1,9 @@
 # Mastering the Windows Command Prompt
 
-```
+```batch
 Note: Use the command prompt with caution, as some commands can recursively
 delete files and folders or cause irreparable damage to your PC.
-```
+```batch
 
 ## Section 1: Getting Started with Command Prompt
 
@@ -146,7 +146,7 @@ Ensure the Folder Exists: The folder specified in the command must already exist
 
 ```batch
 taskkill /F /IM chrome.exe /T
-```
+```batch
 
 Explanation:
 - `/F` forces the termination of the processes.
@@ -259,33 +259,33 @@ Running this command will close all Chrome instances and any related processes. 
 ### 1. How to Set Name in Batch Files
 - **Example 1:** Set and display a variable: `set name=John & echo %name%`.
 - **Example 2:** Use variables in a script: 
-  ```batch
+  ```batchbatch
   @echo off
   set name=John
   echo Hello, %name%
-  ```
+  ```batch
 
 ### 2. Creating Batch Files
 - **Example 1:** Create a simple batch file: `echo echo Hello > hello.bat`.
 - **Example 2:** Create a batch file to automate tasks: 
-  ```batch
+  ```batchbatch
   @echo off
   mkdir NewFolder
   cd NewFolder
   echo This is a test file > testfile.txt
-  ```
+  ```batch
 
 ### 3. Writing Batch Files
 - **Example 1:** Write a batch file with multiple commands: 
-  ```batch
+  ```batchbatch
   @echo off
   echo Starting process...
   mkdir Backup
   xcopy C:\Data\* C:\Backup\
   echo Process completed.
-  ```
-- **Example 2:** Create a batch file with conditional statements: 
   ```batch
+- **Example 2:** Create a batch file with conditional statements: 
+  ```batchbatch
   @echo off
   if exist "C:\Backup\*.*" (
     echo Backup already exists.
@@ -294,17 +294,17 @@ Running this command will close all Chrome instances and any related processes. 
     xcopy C:\Data\* C:\Backup\
     echo Backup created.
   )
-  ```
+  ```batch
 
 ### 4. User Input
 - **Example 1:** Prompt for user input: 
-  ```batch
+  ```batchbatch
   @echo off
   set /p name=Enter your name: 
   echo Hello, %name%.
-  ```
-- **Example 2:** Use input in a conditional statement: 
   ```batch
+- **Example 2:** Use input in a conditional statement: 
+  ```batchbatch
   @echo off
   set /p answer=Do you want to continue? (y/n): 
   if %answer%==y (
@@ -313,11 +313,11 @@ Running this command will close all Chrome instances and any related processes. 
     echo Exiting...
     exit
   )
-  ```
+  ```batch
 
 ### 5. If-Else Statements
 - **Example 1:** Basic if-else statement: 
-  ```batch
+  ```batchbatch
   @echo off
   set /p number=Enter a number: 
   if %number% gtr 10 (
@@ -325,9 +325,9 @@ Running this command will close all Chrome instances and any related processes. 
   ) else (
     echo The number is 10 or less.
   )
-  ```
-- **Example 2:** Nested if-else statements: 
   ```batch
+- **Example 2:** Nested if-else statements: 
+  ```batchbatch
   @echo off
   set /p age=Enter your age: 
   if %age% lss 13 (
@@ -337,27 +337,27 @@ Running this command will close all Chrome instances and any related processes. 
   ) else (
     echo You are an adult.
   )
-  ```
+  ```batch
 
 ### 6. For Loops
 - **Example 1:** Loop through a set of numbers: 
-  ```batch
+  ```batchbatch
   @echo off
   for /l %%i in (1,1,5) do (
     echo Number %%i
   )
-  ```
-- **Example 2:** Loop through files in a directory: 
   ```batch
+- **Example 2:** Loop through files in a directory: 
+  ```batchbatch
   @echo off
   for %%f in (*.txt) do (
     echo File: %%f
   )
-  ```
+  ```batch
 
 ### 7. While Loops
 - **Example 1:** Simulate a while loop: 
-  ```batch
+  ```batchbatch
   @echo off
   set /a count=0
   :loop
@@ -366,9 +366,9 @@ Running this command will close all Chrome instances and any related processes. 
     set /a count+=1
     goto loop
   )
-  ```
-- **Example 2:** Use a while loop with user input: 
   ```batch
+- **Example 2:** Use a while loop with user input: 
+  ```batchbatch
   @echo off
   set /a count=0
   :loop
@@ -379,11 +379,11 @@ Running this command will close all Chrome instances and any related processes. 
     goto loop
   )
   echo Exiting...
-  ```
+  ```batch
 
 ### 8. Functions
 - **Example 1:** Define and call a function: 
-  ```batch
+  ```batchbatch
   @echo off
   call :greet
   exit /b
@@ -391,11 +391,11 @@ Running this command will close all Chrome instances and any related processes. 
   :greet
   echo Hello, World!
   exit /b
-  ```
+  ```batch
 
 
 - **Example 2:** Function with parameters: 
-  ```batch
+  ```batchbatch
   @echo off
   call :add 5 10
   exit /b
@@ -404,7 +404,7 @@ Running this command will close all Chrome instances and any related processes. 
   set /a sum=%1 + %2
   echo Sum: %sum%
   exit /b
-  ```
+  ```batch
 
 ## Section 8: Batch with C#
 
@@ -413,135 +413,135 @@ Running this command will close all Chrome instances and any related processes. 
 - Open Command Prompt.
 - Navigate to the desired directory.
 - Run the following command:
-  ```bash
+  ```batchbash
   dotnet new sln -n MySolution
-  ```
+  ```batch
   This creates a new solution named `MySolution`.
 
 ### 2. Add a WPF Project to the Solution
 **Instructions on how to add a WPF project to the existing solution:**
 - Navigate to the solution directory:
-  ```bash
+  ```batchbash
   cd MySolution
-  ```
+  ```batch
 - Add a new WPF project:
-  ```bash
+  ```batchbash
   dotnet new wpf -n MyWpfApp
-  ```
+  ```batch
 - Add the WPF project to the solution:
-  ```bash
+  ```batchbash
   dotnet sln add MyWpfApp/MyWpfApp.csproj
-  ```
+  ```batch
 
 ### 3. Add a Console Project to the Solution
 **Process for adding a console project to the solution:**
 - Add a new console project:
-  ```bash
+  ```batchbash
   dotnet new console -n MyConsoleApp
-  ```
+  ```batch
 - Add the console project to the solution:
-  ```bash
+  ```batchbash
   dotnet sln add MyConsoleApp/MyConsoleApp.csproj
-  ```
+  ```batch
 
 ### 4. Add a NuGet Package (CSV Helper)
 **How to add the CSV Helper NuGet package to both the WPF and console projects:**
 - Add CSV Helper to the WPF project:
-  ```bash
+  ```batchbash
   dotnet add MyWpfApp/MyWpfApp.csproj package CsvHelper
-  ```
+  ```batch
 - Add CSV Helper to the console project:
-  ```bash
+  ```batchbash
   dotnet add MyConsoleApp/MyConsoleApp.csproj package CsvHelper
-  ```
+  ```batch
 
 ### 5. Clean the Solution
 **Steps to clean the solution using Command Prompt:**
 - Run the following command to clean the solution:
-  ```bash
+  ```batchbash
   dotnet clean MySolution.sln
-  ```
+  ```batch
 - **Importance:** Cleaning the solution helps remove any build artifacts and ensures a fresh build environment.
 
 ### 6. Restore the NuGet Packages
 **How to restore the NuGet packages for the projects:**
 - Run the following command to restore packages:
-  ```bash
+  ```batchbash
   dotnet restore MySolution.sln
-  ```
+  ```batch
 
 ### 7. Build the Solution
 **Steps to build the solution using Command Prompt:**
 - Run the following command to build the solution:
-  ```bash
+  ```batchbash
   dotnet build MySolution.sln
-  ```
+  ```batch
 
 ### 8. Clear the NuGet Cache and Restore Again
 **Instructions on how to clear the NuGet cache:**
 - Clear the NuGet cache:
-  ```bash
+  ```batchbash
   dotnet nuget locals all --clear
-  ```
+  ```batch
 - Restore the packages again:
-  ```bash
+  ```batchbash
   dotnet restore MySolution.sln
-  ```
+  ```batch
 
 ### 9. Rebuild the Solution as x86 or x64
 **Process for rebuilding the solution targeting x86 or x64:**
 - For x86:
-  ```bash
+  ```batchbash
   dotnet build MySolution.sln -r win-x86
-  ```
+  ```batch
 - For x64:
-  ```bash
+  ```batchbash
   dotnet build MySolution.sln -r win-x64
-  ```
+  ```batch
 
 ### 10. Logging the Build Process
 **Methods to log the build process output:**
 - Use the following command to log the build process:
-  ```bash
+  ```batchbash
   dotnet build MySolution.sln > build.log
-  ```
+  ```batch
   This logs the build output to `build.log`.
 
 ### 11. Zip for Distribution
 **Steps to zip the built solution for distribution:**
 - Use the following command to zip the output, including date, time, and version:
-  ```bash
+  ```batchbash
   tar -cvzf MySolution_$(date +%Y%m%d_%H%M%S)_v1.0.0.tar.gz MySolution/bin/Release
-  ```
+  ```batch
   Specify the output path as needed.
 
 ### 12. Create a Self-Signed Certificate
 **Instructions to create a self-signed certificate:**
 - Run the following command:
-  ```bash
+  ```batchbash
   dotnet dev-certs https -ep ./MyCert.pfx -p password
-  ```
+  ```batch
 
 ### 13. Link Self-Signed Certificate with Projects
 **Steps to link the self-signed certificate with the WPF and console projects:**
 - Update the project files (`.csproj`) to include the certificate:
-  ```xml
+  ```batchxml
   <ItemGroup>
     <None Update="MyCert.pfx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  ```
+  ```batch
 - Configure the projects to use the certificate.
 
 ### 14. Generate XML Documentation for Swagger
 **Instructions to generate XML documentation for Swagger:**
 - Update the project files (`.csproj`) to generate XML documentation:
-  ```xml
+  ```batchxml
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-  ```
+  ```batch
 - Build the project to generate the XML documentation.
 
 Here's a section on "CMD Secret Tricks" for your course on mastering the Windows Command Prompt. This section will cover some advanced and lesser-known CMD tricks with practical examples:
@@ -559,12 +559,12 @@ CMD keeps a history of commands you’ve entered, and you can easily navigate th
 
 **Example:**
 
-```plaintext
+```batchplaintext
 C:\>dir
 C:\>cd Documents
 C:\>dir
 C:\>F7
-```
+```batch
 
 ### 2. **Redirecting Output to Clipboard**
 
@@ -572,9 +572,9 @@ You can quickly copy the output of a command to the clipboard using the `clip` c
 
 **Example:**
 
-```cmd
+```batchcmd
 C:\>dir | clip
-```
+```batch
 
 This command copies the directory listing to the clipboard. You can paste it into a document or an email.
 
@@ -584,9 +584,9 @@ CMD allows you to create aliases for long commands using `doskey`.
 
 **Example:**
 
-```cmd
+```batchcmd
 C:\>doskey ll=dir /w /p
-```
+```batch
 
 Now, typing `ll` will execute `dir /w /p`, which lists the directory in wide format with pagination.
 
@@ -596,9 +596,9 @@ You can execute multiple commands in a single line using `&&` (execute next comm
 
 **Example:**
 
-```cmd
+```batchcmd
 C:\>mkdir TestFolder && cd TestFolder && echo Hello > hello.txt
-```
+```batch
 
 This creates a folder, navigates into it, and creates a file with content in one line.
 
@@ -608,9 +608,9 @@ You can use the `for` loop to execute a command and use its output in another co
 
 **Example:**
 
-```cmd
+```batchcmd
 C:\>for /f "tokens=*" %i in ('date /t') do echo Today is %i
-```
+```batch
 
 This command captures the output of `date /t` and uses it to print "Today is" followed by the current date.
 
@@ -630,10 +630,10 @@ You can list and terminate processes directly from CMD.
 
 **Example:**
 
-```cmd
+```batchcmd
 C:\>tasklist
 C:\>taskkill /im notepad.exe /f
-```
+```batch
 
 The first command lists all running processes, and the second command forcefully terminates Notepad.
 
@@ -643,9 +643,9 @@ The `where` command helps locate files in your directories.
 
 **Example:**
 
-```cmd
+```batchcmd
 C:\>where python
-```
+```batch
 
 This command finds the path of the `python` executable.
 
@@ -655,9 +655,9 @@ Use `schtasks` to schedule tasks to run at specific times.
 
 **Example:**
 
-```cmd
+```batchcmd
 C:\>schtasks /create /tn "Backup" /tr "C:\Backup.bat" /sc daily /st 14:00
-```
+```batch
 
 This schedules a task named "Backup" to run `C:\Backup.bat` daily at 2 PM.
 
@@ -667,9 +667,9 @@ You can redirect output to multiple files using `tee`.
 
 **Example:**
 
-```cmd
+```batchcmd
 C:\>dir | tee file1.txt | tee file2.txt
-```
+```batch
 
 This command writes the output of `dir` to both `file1.txt` and `file2.txt`.
 
@@ -679,11 +679,11 @@ Environment variables can be set and used within CMD.
 
 **Example:**
 
-```cmd
+```batchcmd
 C:\>set MYVAR=HelloWorld
 C:\>echo %MYVAR%
 HelloWorld
-```
+```batch
 
 This sets a variable `MYVAR` and then prints its value.
 
@@ -695,11 +695,11 @@ You can automate repetitive tasks by writing batch scripts.
 
 Create a file named `cleanup.bat` with the following content:
 
-```cmd
+```batchcmd
 @echo off
 del /q "C:\Temp\*"
 echo Temporary files deleted.
-```
+```batch
 
 Running `cleanup.bat` will delete all files in the `C:\Temp\` folder and display a confirmation message.
 
