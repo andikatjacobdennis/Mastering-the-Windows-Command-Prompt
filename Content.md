@@ -205,6 +205,117 @@ Tab completion is a powerful feature in the Command Prompt that can significantl
   ```
   Modify the `CompletionChar` and `PathCompletionChar` values. Set them to `0x09` to enable tab completion (the default setting).
 
+### 9. Using Wildcards in Command Prompt
+
+Wildcards are special characters that allow you to perform operations on multiple files or directories simultaneously. They are especially useful for handling batch operations and searching for files with similar names.
+
+#### **Common Wildcards**
+
+1. **Asterisk (*)**:
+   - Represents any number of characters, including none.
+   - Example: `*` can match any file or directory.
+   - Example: `*.txt` matches all files with the `.txt` extension.
+
+2. **Question Mark (?)**:
+   - Represents a single character.
+   - Example: `?` can match any one character.
+   - Example: `file?.txt` matches `file1.txt`, `fileA.txt`, etc., but not `file10.txt`.
+
+#### **Examples of Using Wildcards**
+
+**Example 1: Listing Files**
+
+- **List all files with `.txt` extension**:
+  ```shell
+  dir *.txt
+  ```
+  This command lists all files in the current directory with a `.txt` extension.
+
+- **List all files starting with `file` and having any single character after `file`**:
+  ```shell
+  dir file?.*
+  ```
+  This command lists `file1.txt`, `fileA.doc`, but not `file10.txt`.
+
+**Example 2: Copying Files**
+
+- **Copy all `.txt` files to another directory**:
+  ```shell
+  copy *.txt D:\Backup
+  ```
+  This command copies all `.txt` files from the current directory to `D:\Backup`.
+
+- **Copy all files starting with `data` to another directory**:
+  ```shell
+  copy data*.* D:\DataBackup
+  ```
+  This command copies `data1.csv`, `data2.xlsx`, etc., to `D:\DataBackup`.
+
+**Example 3: Deleting Files**
+
+- **Delete all `.log` files**:
+  ```shell
+  del *.log
+  ```
+  This command deletes all `.log` files in the current directory.
+
+- **Delete files with a specific pattern**:
+  ```shell
+  del file?.*
+  ```
+  This command deletes files like `file1.txt`, `fileA.doc`, but not `file10.txt`.
+
+**Example 4: Renaming Files**
+
+- **Rename all `.txt` files to `.bak` extension**:
+  ```shell
+  ren *.txt *.bak
+  ```
+  This command renames `file1.txt` to `file1.bak`, `notes.txt` to `notes.bak`, etc.
+
+- **Rename files with a specific pattern**:
+  ```shell
+  ren data?.* info?.*
+  ```
+  This command renames `data1.txt` to `info1.txt`, `dataA.csv` to `infoA.csv`, but not `data10.txt`.
+
+**Example 5: Moving Files**
+
+- **Move all `.jpg` files to another directory**:
+  ```shell
+  move *.jpg D:\Images
+  ```
+  This command moves all `.jpg` files from the current directory to `D:\Images`.
+
+- **Move files starting with `report`**:
+  ```shell
+  move report*.* D:\Reports
+  ```
+  This command moves `report1.pdf`, `report_final.docx`, etc., to `D:\Reports`.
+
+**Example 6: Combining Wildcards and Commands**
+
+- **Delete all files with `.tmp` or `.bak` extensions**:
+  ```shell
+  del *.tmp *.bak
+  ```
+  This command deletes all `.tmp` and `.bak` files in the current directory.
+
+**Additional Tips**:
+
+- **Escaping Wildcards**: If you need to use a wildcard character literally, you can escape it using the caret (`^`). For example:
+  ```shell
+  echo file^*.txt
+  ```
+  This will output `file*.txt` instead of matching files.
+
+- **Using Wildcards in Scripts**: Wildcards can be used in batch scripts to perform automated operations on multiple files. For example, a batch file to delete all `.tmp` files could be:
+  ```batch
+  @echo off
+  del *.tmp
+  echo All temporary files have been deleted.
+  ```
+
 ## Section 2: Basic Command Prompt Operations
 
 ### 1. `mkdir`: Creating Directories
