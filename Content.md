@@ -9,7 +9,7 @@ delete files and folders or cause irreparable damage to your PC.
 
 ### 1. Understanding and Interpreting Command Prompt
 
-**Example 1: Prompt Structure**
+**Topic 1: Prompt Structure**
 
 - **Structure**: `C:\Users\YourUsername>`
   - **Drive Letter (C:)**: Indicates the current drive. Commands will operate relative to this drive unless specified otherwise.
@@ -34,7 +34,7 @@ delete files and folders or cause irreparable damage to your PC.
    example.exe
    ```
 
-**Example 2: Interpreting Common Error Messages**
+**Topic 2: Interpreting Common Error Messages**
 
 **Error Message: "Access is denied"**
 
