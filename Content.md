@@ -617,11 +617,11 @@ Running this command will close all Chrome instances and any related processes. 
   ```
 - Build the project to generate the XML documentation.
 
-### Section 9: Advanced Batch File Automation with External Tools and Web APIs
+## Section 9: Advanced Batch File Automation with External Tools and Web APIs
 
 By combining batch files with external tools like `curl` and integrating them with web APIs, you can automate complex tasks and handle HTTP requests efficiently. Incorporating error handling, debugging, and scheduling enhances the robustness and flexibility of your automation workflows. For more advanced scenarios, leveraging PowerShell for additional processing can significantly extend the capabilities of your batch file automation.
 
-#### 1. Using External Tools: Incorporating `curl`
+### 1. Using External Tools: Incorporating `curl`
 
 **`curl`** is a command-line tool for making HTTP requests. It allows batch files to interact with web APIs for fetching, sending, and processing data.
 
@@ -674,7 +674,7 @@ echo Data fetched successfully
 curl -v -X GET "https://api.example.com/data"
 ```
 
-#### 2. Integrating Batch Files with Web APIs
+### 2. Integrating Batch Files with Web APIs
 
 Batch files can automate web API interactions, enabling you to schedule tasks and process data seamlessly.
 
@@ -709,7 +709,7 @@ $response = Get-Content response.json | ConvertFrom-Json
 $response.key
 ```
 
-#### 3. Security Considerations
+### 3. Security Considerations
 
 **Handling Sensitive Data:**
 
