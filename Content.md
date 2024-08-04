@@ -54,25 +54,21 @@ delete files and folders or cause irreparable damage to your PC.
    ```
    This grants full control (F) to the specified user.
    
-### 1. Opening the Command Prompt
+### 2. Opening the Command Prompt
 - **Example 1:** Use the Run dialog (Win + R) and type `cmd` to open Command Prompt.
 - **Example 2:** Search for "Command Prompt" in the Start Menu and select it to open.
 
-### 2. Running as an Administrator
+### 3. Running as an Administrator
 - **Example 1:** Right-click on "Command Prompt" in the Start Menu and select "Run as administrator."
 - **Example 2:** Use the Run dialog (Win + R), type `cmd`, and press Ctrl + Shift + Enter.
 
-### 3. `whoami`: Determining the Logged-in User
+### 4. `whoami`: Determining the Logged-in User
 - **Example 1:** Open Command Prompt and type `whoami` to see the current user.
 - **Example 2:** Use `whoami /user` to get detailed information about the user.
 
-### 4. `cd`: Changing Directories and Navigating the File System
+### 5. `cd`: Changing Directories and Navigating the File System
 - **Example 1:** Navigate to the root directory with `cd \`.
 - **Example 2:** Move to a specific directory, e.g., `cd C:\Users\YourUsername\Documents`.
-
-### 5. How to Read Command Prompt
-- **Example 1:** Understand the prompt structure (e.g., `C:\Users\YourUsername>`).
-- **Example 2:** Learn to interpret common error messages, like "Access is denied."
 
 ### 6. Using the Up and Down Arrow Keys for Navigating
 - **Example 1:** Use the Up arrow to recall the last command.
