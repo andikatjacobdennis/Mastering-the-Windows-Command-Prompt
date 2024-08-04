@@ -388,9 +388,9 @@
   exit /b
   ```
 
-### Batch with C#
+## Section 8: Batch with C#
 
-#### Create a .NET Solution
+### 1. Create a .NET Solution
 **Steps to create a new .NET solution using the Command Prompt:**
 - Open Command Prompt.
 - Navigate to the desired directory.
