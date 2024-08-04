@@ -16,7 +16,7 @@
    - Navigate to the directory where the batch script is saved.
    - Execute the script with the required parameters:
      ```batch
-     setup.bat SolutionName WpfAppName ConsoleAppName Version
+     setup.bat MySolution MyWpfApp MyConsoleApp 1.0.0
      ```
    - Replace `SolutionName`, `WpfAppName`, `ConsoleAppName`, and `Version` with your specific values.
 
