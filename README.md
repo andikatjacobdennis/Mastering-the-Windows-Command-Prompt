@@ -27,5 +27,3 @@ Through a series of detailed lessons and hands-on examples, you will gain profic
 ### Course Format:
 
 This course includes step-by-step tutorials, practical examples, quizzes, and assessments to reinforce learning and ensure you gain hands-on experience with each command. By the end of the course, you'll be equipped with the knowledge and skills to leverage the Windows Command Prompt for a wide range of advanced tasks and projects.
-
-Join us in "Mastering the Windows Command Prompt" and take your command-line expertise to the next level!
