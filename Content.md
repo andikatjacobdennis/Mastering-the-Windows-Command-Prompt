@@ -1,234 +1,116 @@
 # Mastering the Windows Command Prompt
 
-
-> Note: Use the command prompt with caution, as some commands can recursively
-delete files and folders or cause irreparable damage to your PC.
-
+> **Note:** Use the command prompt with caution, as some commands can recursively delete files and folders or cause irreparable damage to your PC.
 
 ## Section 1: Getting Started with Command Prompt
 
 ### 1. Understanding and Interpreting Command Prompt
 
-**Topic 1: Prompt Structure**
+**Prompt Structure**:
 
 - **Structure**: `C:\Users\YourUsername>`
-  - **Drive Letter (C:)**: Indicates the current drive. Commands will operate relative to this drive unless specified otherwise.
-  - **Path (`\Users\YourUsername`)**: Shows the current directory. The command prompt displays the path to the folder where commands will be executed.
-  - **Prompt Symbol (`>`)**: The character `>` signifies that the Command Prompt is ready to accept your input.
+  - **Drive Letter (C:)**: Current drive.
+  - **Path (`\Users\YourUsername`)**: Current directory.
+  - **Prompt Symbol (`>`)**: Indicates readiness for input.
 
-**How to Use It:**
+**Using It**:
 
-1. **Navigating Directories**: Use commands like `cd` (Change Directory) to move between directories. For example:
+1. **Navigating Directories**: Use `cd` (Change Directory).
    ```shell
    cd Documents
    ```
-   This changes the current directory to `Documents`.
-
-2. **Listing Files**: Use `dir` to list files and directories in the current path:
+2. **Listing Files**: Use `dir` to list files and directories.
    ```shell
    dir
    ```
-
-3. **Executing Programs**: You can run executable files or scripts by typing their names:
+3. **Executing Programs**: Run executable files or scripts.
    ```shell
    example.exe
    ```
 
-**Topic 2: Interpreting Common Error Messages**
+**Interpreting Common Error Messages**:
 
-**Error Message: "Access is denied"**
+- **"Access is denied"**:
+  - **Meaning**: Insufficient permissions.
+  - **Troubleshoot**:
+    1. **Check Permissions**: Run as administrator.
+    2. **Verify Path**: Ensure correct path and existence of file/directory.
+    3. **Modify Permissions**: Use `icacls` to grant permissions.
+      ```shell
+      icacls "path\to\file" /grant YourUsername:(F)
+      ```
 
-- **Meaning**: This message typically appears when you do not have the necessary permissions to perform a command or access a file or directory.
-
-**How to Troubleshoot:**
-
-1. **Check Permissions**: Ensure you have the required permissions for the file or directory. You might need to run the Command Prompt as an administrator:
-   - Right-click on the Command Prompt icon.
-   - Select "Run as administrator."
-
-2. **Verify Path and File Existence**: Ensure the file or directory you are trying to access actually exists and that the path is correct.
-
-3. **Modify Permissions**: If you have administrative rights, you can change permissions using the `icacls` command:
-   ```shell
-   icacls "path\to\file" /grant YourUsername:(F)
-   ```
-   This grants full control (F) to the specified user.
-   
 ### 2. Opening the Command Prompt
-- **Example 1:** Use the Run dialog (Win + R) and type `cmd` to open Command Prompt.
-- **Example 2:** Search for "Command Prompt" in the Start Menu and select it to open.
+
+- **Example 1**: Use Run dialog (Win + R) and type `cmd`.
+- **Example 2**: Search "Command Prompt" in Start Menu and select it.
 
 ### 3. Running as an Administrator
-- **Example 1:** Right-click on "Command Prompt" in the Start Menu and select "Run as administrator."
-- **Example 2:** Use the Run dialog (Win + R), type `cmd`, and press Ctrl + Shift + Enter.
+
+- **Example 1**: Right-click on "Command Prompt" in Start Menu and select "Run as administrator."
+- **Example 2**: Use Run dialog (Win + R), type `cmd`, and press Ctrl + Shift + Enter.
 
 ### 4. `whoami`: Determining the Logged-in User
-- **Example 1:** Open Command Prompt and type `whoami` to see the current user.
-- **Example 2:** Use `whoami /user` to get detailed information about the user.
+
+- **Example 1**: Type `whoami` in Command Prompt.
+- **Example 2**: Use `whoami /user` for detailed information.
 
 ### 5. `cd`: Changing Directories and Navigating the File System
-- **Example 1:** Navigate to the root directory with `cd \`.
-- **Example 2:** Move to a specific directory, e.g., `cd C:\Users\YourUsername\Documents`.
+
+- **Example 1**: Navigate to root directory with `cd \`.
+- **Example 2**: Move to a specific directory, e.g., `cd C:\Users\YourUsername\Documents`.
 
 ### 6. Using the Up and Down Arrow Keys for Navigating
-- **Example 1:** Use the Up arrow to recall the last command.
-- **Example 2:** Use the Down arrow to navigate through the command history.
+
+- **Example 1**: Use Up arrow to recall last command.
+- **Example 2**: Use Down arrow to navigate through command history.
 
 ### 7. Changing a Drive in Command Prompt
 
-When working in the Command Prompt, you may need to switch between different drives to access files or execute commands. Here’s a step-by-step guide on how to change drives:
-
-#### **Changing a Drive**
-
-**Example: Switching from C: to D:**
-
-1. **Identify Available Drives**:
-   - You can list available drives and their contents by using the `dir` command. For example:
-     ```shell
-     dir C:
-     ```
-     This will display the contents of the C: drive. Repeat this for other drives like D: to see if they exist.
-
-2. **Change the Drive**:
-   - To switch from one drive to another, simply type the drive letter followed by a colon (`:`) and press Enter. For example, to switch from the C: drive to the D: drive, use:
-     ```shell
-     D:
-     ```
-     After pressing Enter, the Command Prompt will change the active drive to D:.
-
-3. **Verify the Current Drive**:
-   - Once you switch drives, you can verify the current drive by looking at the Command Prompt’s prompt. For instance, if you have switched to the D: drive, the prompt will now display:
-     ```shell
-     D:\>
-     ```
-   - Alternatively, use the `echo` command to confirm the current drive:
-     ```shell
-     echo %cd%
-     ```
-     This will output the current directory, including the drive letter.
-
-#### **Additional Tips:**
-
-- **Absolute vs. Relative Paths**: When you change drives, the Command Prompt will start in the root directory of the new drive. If you want to navigate to a specific directory, you will need to specify the path relative to the new drive’s root:
+- **Example**: Switch from C: to D:
   ```shell
-  cd \FolderName
-  ```
-
-- **Switching Between Drives in Batch Files**: When writing batch files (.bat), you can switch drives by simply specifying the drive letter as part of the command sequence. Example:
-  ```batch
-  @echo off
   D:
-  cd \FolderName
   ```
-
-- **Accessing Network Drives**: If you need to access network drives, make sure they are properly mapped or use the network path directly:
-  ```shell
-  Z:
-  ```
-
-- **Handling Drive Errors**: If you encounter an error when switching drives, make sure the drive is properly connected and recognized by the system. You can use Disk Management (accessed via `diskmgmt.msc`) to check drive status and mappings.
 
 ### 8. Using Tab Completion in Command Prompt
 
-Tab completion is a powerful feature in the Command Prompt that can significantly enhance your productivity by auto-completing file and directory names. This feature reduces typing, minimizes errors, and speeds up navigation.
+**How to Use**:
 
-#### **How to Use Tab Completion**
-
-**Example: Auto-Completing File and Directory Names**
-
-1. **Starting with a Partial Name**:
-   - Begin typing the initial characters of the file or directory name you want to complete. For example, if you have a directory named `Documents` in the current directory, you can start by typing:
+- **Auto-Completing File and Directory Names**:
+  1. **Start with Partial Name**: Type initial characters.
      ```shell
      cd Doc
      ```
-
-2. **Pressing the Tab Key**:
-   - Press the `Tab` key on your keyboard. The Command Prompt will attempt to complete the name based on the characters you have typed. If there is a unique match, it will complete the name for you:
+  2. **Press Tab**: Auto-complete name.
      ```shell
      cd Documents
      ```
+  3. **Cycle Through Matches**: Press Tab repeatedly.
 
-3. **Cycling Through Matches**:
-   - If there are multiple matches that start with the same characters, pressing the `Tab` key repeatedly will cycle through all possible matches. For instance, if you have directories named `Documents`, `Downloads`, and `Desktop`, typing `D` and pressing `Tab` will cycle through:
-     ```shell
-     cd Documents
-     cd Downloads
-     cd Desktop
-     ```
+- **Additional Tips**:
+  - **Case Sensitivity**: Not case-sensitive.
+  - **Navigating Paths**: Use for paths.
+  - **Commands with Parameters**: Use with command parameters.
+  - **Wildcards**: Combine with wildcards.
+  - **Environment Variables**: Use with environment variables.
 
-**Example: Auto-Completing File Names**
-
-1. **Typing a Partial File Name**:
-   - Start with the initial characters of the file name you want to complete. For example, if you have a file named `example.txt` in the current directory, you can start by typing:
-     ```shell
-     type ex
-     ```
-
-2. **Using Tab Completion**:
-   - Press the `Tab` key to auto-complete the file name:
-     ```shell
-     type example.txt
-     ```
-
-**Additional Tips for Tab Completion:**
-
-- **Case Sensitivity**: Tab completion in Command Prompt is not case-sensitive. Typing `doc` and pressing `Tab` will find `Documents`, `documents`, or `DOCuments`.
-
-- **Navigating Paths**: You can use tab completion for navigating paths. For example, to navigate to a nested directory, you can use:
-  ```shell
-  cd Doc\Sub
-  ```
-  Pressing `Tab` after typing `Doc` will complete `Documents`, and pressing `Tab` again after `Sub` will complete `SubFolder` if it exists.
-
-- **Commands with Parameters**: Tab completion works with command parameters as well. For instance, if you are copying a file and want to specify the destination directory, you can use tab completion:
-  ```shell
-  copy example.txt D:\Dest
-  ```
-  Pressing `Tab` after `Dest` will complete `DestinationFolder` if it exists.
-
-- **Wildcards**: Combine tab completion with wildcards for even more power. For example:
-  ```shell
-  dir *.tx
-  ```
-  Press `Tab` to cycle through files with the `.txt` extension.
-
-- **Environment Variables**: Tab completion also works with environment variables. For example:
-  ```shell
-  echo %USER
-  ```
-  Press `Tab` to complete to `%USERNAME%`.
-
-**Configuring Tab Completion Behavior**:
-- **Enable or Disable**: Tab completion is enabled by default in modern versions of Command Prompt. If you need to enable or disable it, you can do so via the registry. Open `regedit` and navigate to:
-  ```
-  HKEY_CURRENT_USER\Software\Microsoft\Command Processor
-  ```
-  Modify the `CompletionChar` and `PathCompletionChar` values. Set them to `0x09` to enable tab completion (the default setting).
+- **Configuring Tab Completion Behavior**:
+  - Enable via registry: `CompletionChar` and `PathCompletionChar`.
 
 ### 9. Using Wildcards in Command Prompt
 
-Wildcards are special characters that allow you to perform operations on multiple files or directories simultaneously. They are especially useful for handling batch operations and searching for files with similar names.
+**Common Wildcards**:
 
-#### **Common Wildcards**
+1. **Asterisk (*)**: Matches any number of characters.
+   - Example: `*.txt` matches all `.txt` files.
+2. **Question Mark (?)**: Matches a single character.
+   - Example: `file?.txt` matches `file1.txt`, `fileA.txt`, but not `file10.txt`.
 
-1. **Asterisk (*)**:
-   - Represents any number of characters, including none.
-   - Example: `*` can match any file or directory.
-   - Example: `*.txt` matches all files with the `.txt` extension.
-
-2. **Question Mark (?)**:
-   - Represents a single character.
-   - Example: `?` can match any one character.
-   - Example: `file?.txt` matches `file1.txt`, `fileA.txt`, etc., but not `file10.txt`.
-
-**Additional Tips**:
-
-- **Escaping Wildcards**: If you need to use a wildcard character literally, you can escape it using the caret (`^`). For example:
-  ```shell
-  echo file^*.txt
-  ```
-  This will output `file*.txt` instead of matching files.
-
+- **Additional Tips**:
+  - **Escaping Wildcards**: Use caret (`^`) to escape.
+    ```shell
+    echo file^*.txt
+    ```
 ## Section 2: Basic Command Prompt Operations
 
 ### 1. `mkdir`: Creating Directories
