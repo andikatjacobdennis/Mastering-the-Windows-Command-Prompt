@@ -159,7 +159,6 @@
 
 ### 2. `robocopy`: A Robust File Copying Tool, Especially for Network Operations
 - **Example 1:** Copy files with attributes: `robocopy C:\Source C
-```plaintext
 :\Destination /COPY:DAT`.
 - **Example 2:** Mirror directories: `robocopy C:\Source C:\Destination /MIR`.
 
