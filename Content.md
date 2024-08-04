@@ -137,6 +137,18 @@ Ensure the Folder Exists: The folder specified in the command must already exist
 ### 7. `tasklist`: Viewing Currently Running Tasks and Processes
 - **Example 1:** List all running tasks: `tasklist`.
 - **Example 2:** List tasks with specific attributes: `tasklist /fi "STATUS eq running"`.
+- **Example 3:** To kill all Chrome processes in the Task List using Command Prompt, you can use the `taskkill` command. Here's the command to do it:
+
+```batch
+taskkill /F /IM chrome.exe /T
+```
+
+Explanation:
+- `/F` forces the termination of the processes.
+- `/IM` specifies the image name (in this case, `chrome.exe`).
+- `/T` terminates the specified process and any child processes started by it.
+
+Running this command will close all Chrome instances and any related processes. Make sure to save any work in Chrome before executing this command as it will forcefully close the browser without saving open tabs.
 
 ### 8. `netstat`: Displaying Active Network Connections
 - **Example 1:** View all active connections: `netstat`.
