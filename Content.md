@@ -388,6 +388,144 @@
   exit /b
   ```
 
+### Batch with C#
+
+#### Create a .NET Solution
+**Steps to create a new .NET solution using the Command Prompt:**
+- Open Command Prompt.
+- Navigate to the desired directory.
+- Run the following command:
+  ```bash
+  dotnet new sln -n MySolution
+  ```
+  This creates a new solution named `MySolution`.
+
+#### Add a WPF Project to the Solution
+**Instructions on how to add a WPF project to the existing solution:**
+- Navigate to the solution directory:
+  ```bash
+  cd MySolution
+  ```
+- Add a new WPF project:
+  ```bash
+  dotnet new wpf -n MyWpfApp
+  ```
+- Add the WPF project to the solution:
+  ```bash
+  dotnet sln add MyWpfApp/MyWpfApp.csproj
+  ```
+
+#### Add a Console Project to the Solution
+**Process for adding a console project to the solution:**
+- Add a new console project:
+  ```bash
+  dotnet new console -n MyConsoleApp
+  ```
+- Add the console project to the solution:
+  ```bash
+  dotnet sln add MyConsoleApp/MyConsoleApp.csproj
+  ```
+
+#### Add a NuGet Package (CSV Helper)
+**How to add the CSV Helper NuGet package to both the WPF and console projects:**
+- Add CSV Helper to the WPF project:
+  ```bash
+  dotnet add MyWpfApp/MyWpfApp.csproj package CsvHelper
+  ```
+- Add CSV Helper to the console project:
+  ```bash
+  dotnet add MyConsoleApp/MyConsoleApp.csproj package CsvHelper
+  ```
+
+#### Clean the Solution
+**Steps to clean the solution using Command Prompt:**
+- Run the following command to clean the solution:
+  ```bash
+  dotnet clean MySolution.sln
+  ```
+- **Importance:** Cleaning the solution helps remove any build artifacts and ensures a fresh build environment.
+
+#### Restore the NuGet Packages
+**How to restore the NuGet packages for the projects:**
+- Run the following command to restore packages:
+  ```bash
+  dotnet restore MySolution.sln
+  ```
+
+#### Build the Solution
+**Steps to build the solution using Command Prompt:**
+- Run the following command to build the solution:
+  ```bash
+  dotnet build MySolution.sln
+  ```
+
+#### Clear the NuGet Cache and Restore Again
+**Instructions on how to clear the NuGet cache:**
+- Clear the NuGet cache:
+  ```bash
+  dotnet nuget locals all --clear
+  ```
+- Restore the packages again:
+  ```bash
+  dotnet restore MySolution.sln
+  ```
+
+#### Rebuild the Solution as x86 or x64
+**Process for rebuilding the solution targeting x86 or x64:**
+- For x86:
+  ```bash
+  dotnet build MySolution.sln -r win-x86
+  ```
+- For x64:
+  ```bash
+  dotnet build MySolution.sln -r win-x64
+  ```
+
+#### Logging the Build Process
+**Methods to log the build process output:**
+- Use the following command to log the build process:
+  ```bash
+  dotnet build MySolution.sln > build.log
+  ```
+  This logs the build output to `build.log`.
+
+#### Zip for Distribution
+**Steps to zip the built solution for distribution:**
+- Use the following command to zip the output, including date, time, and version:
+  ```bash
+  tar -cvzf MySolution_$(date +%Y%m%d_%H%M%S)_v1.0.0.tar.gz MySolution/bin/Release
+  ```
+  Specify the output path as needed.
+
+#### Create a Self-Signed Certificate
+**Instructions to create a self-signed certificate:**
+- Run the following command:
+  ```bash
+  dotnet dev-certs https -ep ./MyCert.pfx -p password
+  ```
+
+#### Link Self-Signed Certificate with Projects
+**Steps to link the self-signed certificate with the WPF and console projects:**
+- Update the project files (`.csproj`) to include the certificate:
+  ```xml
+  <ItemGroup>
+    <None Update="MyCert.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  ```
+- Configure the projects to use the certificate.
+
+#### Generate XML Documentation for Swagger
+**Instructions to generate XML documentation for Swagger:**
+- Update the project files (`.csproj`) to generate XML documentation:
+  ```xml
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  ```
+- Build the project to generate the XML documentation.
+
 ## Conclusion
 Mastering these advanced Command Prompt commands and batch file programming techniques will significantly enhance your productivity and ability to automate tasks in Windows. Experiment with these commands and incorporate them into your workflow to harness their full potential.
 
