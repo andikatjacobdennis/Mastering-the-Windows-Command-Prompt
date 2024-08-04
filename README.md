@@ -2,9 +2,7 @@
 
 ### Description:
 
-Unlock the full potential of the Windows Command Prompt with our comprehensive course, "Mastering the Windows Command Prompt." Designed for aspiring software architects and seasoned IT professionals, this course provides an in-depth understanding of both fundamental and advanced Command Prompt commands, tools, and techniques. You'll learn how to navigate the command line efficiently, manage files and directories, perform network diagnostics, handle disk operations, and automate tasks using batch file programming.
-
-Through a series of detailed lessons and hands-on examples, you will gain proficiency in using the Command Prompt to solve complex problems and streamline your workflow. Each section of the course is meticulously structured to build your skills progressively, ensuring you can tackle any command-line challenge with confidence.
+Unlock the full potential of the Windows Command Prompt, Designed for aspiring software architects and seasoned IT professionals, this course provides an in-depth understanding of both fundamental and advanced Command Prompt commands, tools, and techniques. You'll learn how to navigate the command line efficiently, manage files and directories, perform network diagnostics, handle disk operations, and automate tasks using batch file programming.
 
 ### Table of Contents
 
