@@ -619,7 +619,7 @@ Running this command will close all Chrome instances and any related processes. 
 
 ### Section 9: Advanced Batch File Automation with External Tools and Web APIs
 
-Batch files are a versatile tool for automating tasks in Windows. When combined with external tools like `curl` and advanced scripting, they can handle complex operations involving web APIs. This section covers how to leverage these tools to extend batch file functionality and interact with web services effectively.
+By combining batch files with external tools like `curl` and integrating them with web APIs, you can automate complex tasks and handle HTTP requests efficiently. Incorporating error handling, debugging, and scheduling enhances the robustness and flexibility of your automation workflows. For more advanced scenarios, leveraging PowerShell for additional processing can significantly extend the capabilities of your batch file automation.
 
 #### 1. Using External Tools: Incorporating `curl`
 
@@ -722,10 +722,6 @@ $response.key
   ```
 
 Ensure proper permissions and avoid hardcoding sensitive information directly into your scripts.
-
-#### Summary
-
-By combining batch files with external tools like `curl` and integrating them with web APIs, you can automate complex tasks and handle HTTP requests efficiently. Incorporating error handling, debugging, and scheduling enhances the robustness and flexibility of your automation workflows. For more advanced scenarios, leveraging PowerShell for additional processing can significantly extend the capabilities of your batch file automation.
 
 ## Section 10: CMD Secret Tricks
 
