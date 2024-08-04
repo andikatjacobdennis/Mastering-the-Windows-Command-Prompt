@@ -74,6 +74,62 @@ delete files and folders or cause irreparable damage to your PC.
 - **Example 1:** Use the Up arrow to recall the last command.
 - **Example 2:** Use the Down arrow to navigate through the command history.
 
+### 7. Changing a Drive in Command Prompt
+
+When working in the Command Prompt, you may need to switch between different drives to access files or execute commands. Here’s a step-by-step guide on how to change drives:
+
+#### **Changing a Drive**
+
+**Example: Switching from C: to D:**
+
+1. **Identify Available Drives**:
+   - You can list available drives and their contents by using the `dir` command. For example:
+     ```shell
+     dir C:
+     ```
+     This will display the contents of the C: drive. Repeat this for other drives like D: to see if they exist.
+
+2. **Change the Drive**:
+   - To switch from one drive to another, simply type the drive letter followed by a colon (`:`) and press Enter. For example, to switch from the C: drive to the D: drive, use:
+     ```shell
+     D:
+     ```
+     After pressing Enter, the Command Prompt will change the active drive to D:.
+
+3. **Verify the Current Drive**:
+   - Once you switch drives, you can verify the current drive by looking at the Command Prompt’s prompt. For instance, if you have switched to the D: drive, the prompt will now display:
+     ```shell
+     D:\>
+     ```
+   - Alternatively, use the `echo` command to confirm the current drive:
+     ```shell
+     echo %cd%
+     ```
+     This will output the current directory, including the drive letter.
+
+#### **Additional Tips:**
+
+- **Absolute vs. Relative Paths**: When you change drives, the Command Prompt will start in the root directory of the new drive. If you want to navigate to a specific directory, you will need to specify the path relative to the new drive’s root:
+  ```shell
+  cd \FolderName
+  ```
+
+- **Switching Between Drives in Batch Files**: When writing batch files (.bat), you can switch drives by simply specifying the drive letter as part of the command sequence. Example:
+  ```batch
+  @echo off
+  D:
+  cd \FolderName
+  ```
+
+- **Accessing Network Drives**: If you need to access network drives, make sure they are properly mapped or use the network path directly:
+  ```shell
+  Z:
+  ```
+
+- **Handling Drive Errors**: If you encounter an error when switching drives, make sure the drive is properly connected and recognized by the system. You can use Disk Management (accessed via `diskmgmt.msc`) to check drive status and mappings.
+
+By following these steps, you can effectively manage and switch between different drives in Command Prompt, making it easier to navigate and execute commands across various storage locations.
+
 ## Section 2: Basic Command Prompt Operations
 
 ### 1. `mkdir`: Creating Directories
