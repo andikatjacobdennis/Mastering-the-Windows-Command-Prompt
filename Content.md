@@ -128,7 +128,82 @@ When working in the Command Prompt, you may need to switch between different dri
 
 - **Handling Drive Errors**: If you encounter an error when switching drives, make sure the drive is properly connected and recognized by the system. You can use Disk Management (accessed via `diskmgmt.msc`) to check drive status and mappings.
 
-By following these steps, you can effectively manage and switch between different drives in Command Prompt, making it easier to navigate and execute commands across various storage locations.
+### 8. Using Tab Completion in Command Prompt
+
+Tab completion is a powerful feature in the Command Prompt that can significantly enhance your productivity by auto-completing file and directory names. This feature reduces typing, minimizes errors, and speeds up navigation.
+
+#### **How to Use Tab Completion**
+
+**Example: Auto-Completing File and Directory Names**
+
+1. **Starting with a Partial Name**:
+   - Begin typing the initial characters of the file or directory name you want to complete. For example, if you have a directory named `Documents` in the current directory, you can start by typing:
+     ```shell
+     cd Doc
+     ```
+
+2. **Pressing the Tab Key**:
+   - Press the `Tab` key on your keyboard. The Command Prompt will attempt to complete the name based on the characters you have typed. If there is a unique match, it will complete the name for you:
+     ```shell
+     cd Documents
+     ```
+
+3. **Cycling Through Matches**:
+   - If there are multiple matches that start with the same characters, pressing the `Tab` key repeatedly will cycle through all possible matches. For instance, if you have directories named `Documents`, `Downloads`, and `Desktop`, typing `D` and pressing `Tab` will cycle through:
+     ```shell
+     cd Documents
+     cd Downloads
+     cd Desktop
+     ```
+
+**Example: Auto-Completing File Names**
+
+1. **Typing a Partial File Name**:
+   - Start with the initial characters of the file name you want to complete. For example, if you have a file named `example.txt` in the current directory, you can start by typing:
+     ```shell
+     type ex
+     ```
+
+2. **Using Tab Completion**:
+   - Press the `Tab` key to auto-complete the file name:
+     ```shell
+     type example.txt
+     ```
+
+**Additional Tips for Tab Completion:**
+
+- **Case Sensitivity**: Tab completion in Command Prompt is not case-sensitive. Typing `doc` and pressing `Tab` will find `Documents`, `documents`, or `DOCuments`.
+
+- **Navigating Paths**: You can use tab completion for navigating paths. For example, to navigate to a nested directory, you can use:
+  ```shell
+  cd Doc\Sub
+  ```
+  Pressing `Tab` after typing `Doc` will complete `Documents`, and pressing `Tab` again after `Sub` will complete `SubFolder` if it exists.
+
+- **Commands with Parameters**: Tab completion works with command parameters as well. For instance, if you are copying a file and want to specify the destination directory, you can use tab completion:
+  ```shell
+  copy example.txt D:\Dest
+  ```
+  Pressing `Tab` after `Dest` will complete `DestinationFolder` if it exists.
+
+- **Wildcards**: Combine tab completion with wildcards for even more power. For example:
+  ```shell
+  dir *.tx
+  ```
+  Press `Tab` to cycle through files with the `.txt` extension.
+
+- **Environment Variables**: Tab completion also works with environment variables. For example:
+  ```shell
+  echo %USER
+  ```
+  Press `Tab` to complete to `%USERNAME%`.
+
+**Configuring Tab Completion Behavior**:
+- **Enable or Disable**: Tab completion is enabled by default in modern versions of Command Prompt. If you need to enable or disable it, you can do so via the registry. Open `regedit` and navigate to:
+  ```
+  HKEY_CURRENT_USER\Software\Microsoft\Command Processor
+  ```
+  Modify the `CompletionChar` and `PathCompletionChar` values. Set them to `0x09` to enable tab completion (the default setting).
 
 ## Section 2: Basic Command Prompt Operations
 
