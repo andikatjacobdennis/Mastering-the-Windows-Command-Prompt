@@ -72,7 +72,7 @@
   D:
   ```
 
-### 8. Using Tab Completion in Command Prompt
+### 8. Tab Completion
 
 **How to Use**:
 
@@ -90,9 +90,7 @@
 - **Configuring Tab Completion Behavior**:
   - Enable via registry: `CompletionChar` and `PathCompletionChar`.
 
-### 9. Using Wildcards in Command Prompt
-
-**Common Wildcards**:
+### 9. Wildcards
 
 1. **Asterisk (*)**: Matches any number of characters.
    - Example: `*.txt` matches all `.txt` files.
