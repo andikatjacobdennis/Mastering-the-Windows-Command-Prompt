@@ -20,6 +20,25 @@
      ```
    - Replace `SolutionName`, `WpfAppName`, `ConsoleAppName`, and `Version` with your specific values.
 
+### Here’s a brief overview of the certificates and their usage:
+
+1. **`MyCertificate.pvk`**:
+   - **Type**: Private Key File
+   - **Usage**: Contains the private key for the certificate; used to create the PFX file.
+
+2. **`MyCertificate.cer`**:
+   - **Type**: Certificate File
+   - **Usage**: Contains the public part of the certificate; used with the private key to create the PFX file.
+
+3. **`MyCertificate.pfx`**:
+   - **Type**: Personal Information Exchange (PFX) File
+   - **Usage**: Combines the certificate and private key into a single file for code signing. It ensures the authenticity and integrity of signed assemblies and helps prevent security warnings.
+
+**Usage Summary**:
+- **Create Certificate**: `MyCertificate.pvk` and `MyCertificate.cer` are used to generate the PFX file.
+- **Convert to PFX**: `MyCertificate.pfx` is created for signing.
+- **Sign Assemblies**: `MyCertificate.pfx` is used to digitally sign DLLs and EXEs, verifying their integrity and authenticity.
+
 This script automates the process of creating and configuring a .NET solution with a WPF and console application, signing the assemblies, and packaging the solution for distribution.
 
 ```batch
