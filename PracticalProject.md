@@ -1,4 +1,26 @@
-Here is the complete batch script code with explanations:
+### Instructions for Setting Up the Environment
+
+1. **Install .NET SDK**:
+   - Download and install the .NET SDK from the [.NET website](https://dotnet.microsoft.com/download).
+
+2. **Install Required Tools**:
+   - **Windows SDK**: Ensure you have the Windows SDK installed to get `makecert.exe`, `pvk2pfx.exe`, and `signtool.exe`. Install it from the [Microsoft website](https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/).
+   - **7-Zip**: Download and install [7-Zip](https://www.7-zip.org/).
+
+3. **Modify the Script**:
+   - Update the paths for `MakeCertPath`, `Pvk2PfxPath`, `SignToolPath`, and `7-Zip` according to where these tools are installed on your machine.
+
+4. **Run the Script**:
+   - Save the batch script as `setup.bat` or another desired name.
+   - Open Command Prompt as an Administrator.
+   - Navigate to the directory where the batch script is saved.
+   - Execute the script with the required parameters:
+     ```batch
+     setup.bat SolutionName WpfAppName ConsoleAppName Version
+     ```
+   - Replace `SolutionName`, `WpfAppName`, `ConsoleAppName`, and `Version` with your specific values.
+
+This script automates the process of creating and configuring a .NET solution with a WPF and console application, signing the assemblies, and packaging the solution for distribution.
 
 ```batch
 @echo off
@@ -76,27 +98,3 @@ echo Done.
 endlocal
 pause
 ```
-
-### Instructions for Setting Up the Environment
-
-1. **Install .NET SDK**:
-   - Download and install the .NET SDK from the [.NET website](https://dotnet.microsoft.com/download).
-
-2. **Install Required Tools**:
-   - **Windows SDK**: Ensure you have the Windows SDK installed to get `makecert.exe`, `pvk2pfx.exe`, and `signtool.exe`. Install it from the [Microsoft website](https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/).
-   - **7-Zip**: Download and install [7-Zip](https://www.7-zip.org/).
-
-3. **Modify the Script**:
-   - Update the paths for `MakeCertPath`, `Pvk2PfxPath`, `SignToolPath`, and `7-Zip` according to where these tools are installed on your machine.
-
-4. **Run the Script**:
-   - Save the batch script as `setup.bat` or another desired name.
-   - Open Command Prompt as an Administrator.
-   - Navigate to the directory where the batch script is saved.
-   - Execute the script with the required parameters:
-     ```batch
-     setup.bat SolutionName WpfAppName ConsoleAppName Version
-     ```
-   - Replace `SolutionName`, `WpfAppName`, `ConsoleAppName`, and `Version` with your specific values.
-
-This script automates the process of creating and configuring a .NET solution with a WPF and console application, signing the assemblies, and packaging the solution for distribution.
