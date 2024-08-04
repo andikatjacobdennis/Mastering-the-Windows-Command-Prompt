@@ -144,7 +144,7 @@ Ensure the Folder Exists: The folder specified in the command must already exist
 - **Example 2:** List tasks with specific attributes: `tasklist /fi "STATUS eq running"`.
 - **Example 3:** To kill all Chrome processes in the Task List using Command Prompt, you can use the `taskkill` command. Here's the command to do it:
 
-```
+```cmd
 taskkill /F /IM chrome.exe /T
 ```
 
