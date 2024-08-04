@@ -400,7 +400,7 @@
   ```
   This creates a new solution named `MySolution`.
 
-#### Add a WPF Project to the Solution
+### 2. Add a WPF Project to the Solution
 **Instructions on how to add a WPF project to the existing solution:**
 - Navigate to the solution directory:
   ```bash
@@ -415,7 +415,7 @@
   dotnet sln add MyWpfApp/MyWpfApp.csproj
   ```
 
-#### Add a Console Project to the Solution
+### 3. Add a Console Project to the Solution
 **Process for adding a console project to the solution:**
 - Add a new console project:
   ```bash
@@ -426,7 +426,7 @@
   dotnet sln add MyConsoleApp/MyConsoleApp.csproj
   ```
 
-#### Add a NuGet Package (CSV Helper)
+### 4. Add a NuGet Package (CSV Helper)
 **How to add the CSV Helper NuGet package to both the WPF and console projects:**
 - Add CSV Helper to the WPF project:
   ```bash
@@ -437,7 +437,7 @@
   dotnet add MyConsoleApp/MyConsoleApp.csproj package CsvHelper
   ```
 
-#### Clean the Solution
+### 5. Clean the Solution
 **Steps to clean the solution using Command Prompt:**
 - Run the following command to clean the solution:
   ```bash
@@ -445,21 +445,21 @@
   ```
 - **Importance:** Cleaning the solution helps remove any build artifacts and ensures a fresh build environment.
 
-#### Restore the NuGet Packages
+### 6. Restore the NuGet Packages
 **How to restore the NuGet packages for the projects:**
 - Run the following command to restore packages:
   ```bash
   dotnet restore MySolution.sln
   ```
 
-#### Build the Solution
+### 7. Build the Solution
 **Steps to build the solution using Command Prompt:**
 - Run the following command to build the solution:
   ```bash
   dotnet build MySolution.sln
   ```
 
-#### Clear the NuGet Cache and Restore Again
+### 8. Clear the NuGet Cache and Restore Again
 **Instructions on how to clear the NuGet cache:**
 - Clear the NuGet cache:
   ```bash
@@ -470,7 +470,7 @@
   dotnet restore MySolution.sln
   ```
 
-#### Rebuild the Solution as x86 or x64
+### 9. Rebuild the Solution as x86 or x64
 **Process for rebuilding the solution targeting x86 or x64:**
 - For x86:
   ```bash
@@ -481,7 +481,7 @@
   dotnet build MySolution.sln -r win-x64
   ```
 
-#### Logging the Build Process
+### 10. Logging the Build Process
 **Methods to log the build process output:**
 - Use the following command to log the build process:
   ```bash
@@ -489,7 +489,7 @@
   ```
   This logs the build output to `build.log`.
 
-#### Zip for Distribution
+### 11. Zip for Distribution
 **Steps to zip the built solution for distribution:**
 - Use the following command to zip the output, including date, time, and version:
   ```bash
@@ -497,14 +497,14 @@
   ```
   Specify the output path as needed.
 
-#### Create a Self-Signed Certificate
+### 12. Create a Self-Signed Certificate
 **Instructions to create a self-signed certificate:**
 - Run the following command:
   ```bash
   dotnet dev-certs https -ep ./MyCert.pfx -p password
   ```
 
-#### Link Self-Signed Certificate with Projects
+### 13. Link Self-Signed Certificate with Projects
 **Steps to link the self-signed certificate with the WPF and console projects:**
 - Update the project files (`.csproj`) to include the certificate:
   ```xml
@@ -516,7 +516,7 @@
   ```
 - Configure the projects to use the certificate.
 
-#### Generate XML Documentation for Swagger
+### 14. Generate XML Documentation for Swagger
 **Instructions to generate XML documentation for Swagger:**
 - Update the project files (`.csproj`) to generate XML documentation:
   ```xml
