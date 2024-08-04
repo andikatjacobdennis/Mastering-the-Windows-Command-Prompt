@@ -528,9 +528,7 @@
 
 Here's a section on "CMD Secret Tricks" for your course on mastering the Windows Command Prompt. This section will cover some advanced and lesser-known CMD tricks with practical examples:
 
----
-
-## Section 8: CMD Secret Tricks
+## Section 9: CMD Secret Tricks
 
 The Windows Command Prompt (CMD) is packed with hidden gems and secret tricks that can significantly enhance your productivity. This section explores some of these advanced features, providing practical examples to help you leverage CMD to its fullest.
 
