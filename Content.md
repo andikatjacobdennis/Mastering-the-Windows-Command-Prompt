@@ -7,6 +7,53 @@ delete files and folders or cause irreparable damage to your PC.
 
 ## Section 1: Getting Started with Command Prompt
 
+### 1. Understanding and Interpreting Command Prompt
+
+**Example 1: Prompt Structure**
+
+- **Structure**: `C:\Users\YourUsername>`
+  - **Drive Letter (C:)**: Indicates the current drive. Commands will operate relative to this drive unless specified otherwise.
+  - **Path (`\Users\YourUsername`)**: Shows the current directory. The command prompt displays the path to the folder where commands will be executed.
+  - **Prompt Symbol (`>`)**: The character `>` signifies that the Command Prompt is ready to accept your input.
+
+**How to Use It:**
+
+1. **Navigating Directories**: Use commands like `cd` (Change Directory) to move between directories. For example:
+   ```shell
+   cd Documents
+   ```
+   This changes the current directory to `Documents`.
+
+2. **Listing Files**: Use `dir` to list files and directories in the current path:
+   ```shell
+   dir
+   ```
+
+3. **Executing Programs**: You can run executable files or scripts by typing their names:
+   ```shell
+   example.exe
+   ```
+
+**Example 2: Interpreting Common Error Messages**
+
+**Error Message: "Access is denied"**
+
+- **Meaning**: This message typically appears when you do not have the necessary permissions to perform a command or access a file or directory.
+
+**How to Troubleshoot:**
+
+1. **Check Permissions**: Ensure you have the required permissions for the file or directory. You might need to run the Command Prompt as an administrator:
+   - Right-click on the Command Prompt icon.
+   - Select "Run as administrator."
+
+2. **Verify Path and File Existence**: Ensure the file or directory you are trying to access actually exists and that the path is correct.
+
+3. **Modify Permissions**: If you have administrative rights, you can change permissions using the `icacls` command:
+   ```shell
+   icacls "path\to\file" /grant YourUsername:(F)
+   ```
+   This grants full control (F) to the specified user.
+   
 ### 1. Opening the Command Prompt
 - **Example 1:** Use the Run dialog (Win + R) and type `cmd` to open Command Prompt.
 - **Example 2:** Search for "Command Prompt" in the Start Menu and select it to open.
