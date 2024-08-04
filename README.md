@@ -1,4 +1,4 @@
-# Mastering-the-Windows-Command-Prompt
+# Mastering the Windows Command Prompt
 
 ### Course Description:
 
