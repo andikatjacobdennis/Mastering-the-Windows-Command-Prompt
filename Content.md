@@ -146,7 +146,7 @@ Ensure the Folder Exists: The folder specified in the command must already exist
 
 ```batch
 taskkill /F /IM chrome.exe /T
-```batch
+```
 
 Explanation:
 - `/F` forces the termination of the processes.
