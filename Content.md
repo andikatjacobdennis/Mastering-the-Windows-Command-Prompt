@@ -1,5 +1,7 @@
 # Mastering the Windows Command Prompt
 
+||
+|---------|
 | Warning: **Use the command prompt with caution, as some commands can recursively delete files and folders or cause irreparable damage to your PC.** |
 
 ## Section 1: Getting Started with Command Prompt
