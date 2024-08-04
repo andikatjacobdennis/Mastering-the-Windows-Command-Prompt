@@ -87,13 +87,6 @@
      ```
   3. **Cycle Through Matches**: Press Tab repeatedly.
 
-- **Additional Tips**:
-  - **Case Sensitivity**: Not case-sensitive.
-  - **Navigating Paths**: Use for paths.
-  - **Commands with Parameters**: Use with command parameters.
-  - **Wildcards**: Combine with wildcards.
-  - **Environment Variables**: Use with environment variables.
-
 - **Configuring Tab Completion Behavior**:
   - Enable via registry: `CompletionChar` and `PathCompletionChar`.
 
