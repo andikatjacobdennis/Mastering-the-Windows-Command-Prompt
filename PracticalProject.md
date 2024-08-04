@@ -1,110 +1,104 @@
-Here's a PowerShell script to automate the creation of a .NET solution with WPF and Console projects, including various configurations and tasks as described:
+Certainly! Below is a practical CMD batch file that performs all the tasks you've mentioned. This batch file takes various inputs as parameters and executes the necessary commands for each step.
 
-```powershell
-# PowerShell Script to Create a .NET Solution with WPF and Console Projects
+```batch
+@echo off
+setlocal
 
-# 1. Create a .NET Solution
-$solutionName = "MySolution"
-$wpfProjectName = "MyWpfApp"
-$consoleProjectName = "MyConsoleApp"
-$nugetPackage = "CsvHelper"
-$certificateName = "MyCert.pfx"
-$certificatePassword = "password"
+REM Check if the correct number of parameters are passed
+if "%~1"=="" (
+    echo Usage: %0 SolutionName WpfProjectName ConsoleProjectName Version
+    exit /b 1
+)
 
-# Navigate to the desired directory
-$solutionPath = "C:\Projects\$solutionName"
-if (!(Test-Path $solutionPath)) {
-    New-Item -Path $solutionPath -ItemType Directory
-}
-Set-Location -Path $solutionPath
+REM Parameters
+set SOLUTION_NAME=%~1
+set WPF_PROJECT_NAME=%~2
+set CONSOLE_PROJECT_NAME=%~3
+set VERSION=%~4
 
-# Create the solution
-dotnet new sln -n $solutionName
+REM 1. Create a .NET Solution
+dotnet new sln -n %SOLUTION_NAME%
+cd %SOLUTION_NAME%
 
-# 2. Add a WPF Project to the Solution
-dotnet new wpf -n $wpfProjectName
-dotnet sln add "$wpfProjectName\$wpfProjectName.csproj"
+REM 2. Add a WPF Project to the Solution
+dotnet new wpf -n %WPF_PROJECT_NAME%
+dotnet sln add %WPF_PROJECT_NAME%\%WPF_PROJECT_NAME%.csproj
 
-# 3. Add a Console Project to the Solution
-dotnet new console -n $consoleProjectName
-dotnet sln add "$consoleProjectName\$consoleProjectName.csproj"
+REM 3. Add a Console Project to the Solution
+dotnet new console -n %CONSOLE_PROJECT_NAME%
+dotnet sln add %CONSOLE_PROJECT_NAME%\%CONSOLE_PROJECT_NAME%.csproj
 
-# 4. Add a NuGet Package (CSV Helper)
-dotnet add "$wpfProjectName\$wpfProjectName.csproj" package $nugetPackage
-dotnet add "$consoleProjectName\$consoleProjectName.csproj" package $nugetPackage
+REM 4. Add a NuGet Package (CSV Helper)
+dotnet add %WPF_PROJECT_NAME%\%WPF_PROJECT_NAME%.csproj package CsvHelper
+dotnet add %CONSOLE_PROJECT_NAME%\%CONSOLE_PROJECT_NAME%.csproj package CsvHelper
 
-# 5. Clean the Solution
-dotnet clean "$solutionName.sln"
+REM 5. Clean the Solution
+dotnet clean %SOLUTION_NAME%.sln
 
-# 6. Restore the NuGet Packages
-dotnet restore "$solutionName.sln"
+REM 6. Restore the NuGet Packages
+dotnet restore %SOLUTION_NAME%.sln
 
-# 7. Build the Solution
-dotnet build "$solutionName.sln"
+REM 7. Build the Solution
+dotnet build %SOLUTION_NAME%.sln
 
-# 8. Clear the NuGet Cache and Restore Again
+REM 8. Clear the NuGet Cache and Restore Again
 dotnet nuget locals all --clear
-dotnet restore "$solutionName.sln"
+dotnet restore %SOLUTION_NAME%.sln
 
-# 9. Rebuild the Solution as x86 or x64
-dotnet build "$solutionName.sln" -r win-x86
-dotnet build "$solutionName.sln" -r win-x64
+REM 9. Rebuild the Solution as x86 and x64
+dotnet build %SOLUTION_NAME%.sln -r win-x86
+dotnet build %SOLUTION_NAME%.sln -r win-x64
 
-# 10. Logging the Build Process
-dotnet build "$solutionName.sln" > build.log
+REM 10. Logging the Build Process
+dotnet build %SOLUTION_NAME%.sln > build.log
 
-# 11. Zip for Distribution
-$timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
-$zipFileName = "MySolution_${timestamp}_v1.0.0.tar.gz"
-Compress-Archive -Path "$solutionPath\*" -DestinationPath "$solutionPath\$zipFileName"
+REM 11. Zip for Distribution
+set ZIP_NAME=%SOLUTION_NAME%_%DATE:~10,4%%DATE:~4,2%%DATE:~7,2%_%TIME:~0,2%%TIME:~3,2%%TIME:~6,2%_v%VERSION%.tar.gz
+tar -cvzf %ZIP_NAME% %SOLUTION_NAME%\bin\Release
 
-# 12. Create a Self-Signed Certificate
-dotnet dev-certs https -ep "./$certificateName" -p $certificatePassword
+REM 12. Create a Self-Signed Certificate
+dotnet dev-certs https -ep ./MyCert.pfx -p password
 
-# 13. Link Self-Signed Certificate with Projects
-$certificateConfig = @"
-<ItemGroup>
-  <None Update="$certificateName">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-  </None>
-</ItemGroup>
-"@
+REM 13. Link Self-Signed Certificate with Projects
+for %%i in (%WPF_PROJECT_NAME% %CONSOLE_PROJECT_NAME%) do (
+    echo ^<ItemGroup^> >> %%i\%%i.csproj
+    echo ^<None Update="MyCert.pfx"^> >> %%i\%%i.csproj
+    echo ^<CopyToOutputDirectory^>PreserveNewest^</CopyToOutputDirectory^> >> %%i\%%i.csproj
+    echo ^</None^> >> %%i\%%i.csproj
+    echo ^</ItemGroup^> >> %%i\%%i.csproj
+)
 
-Add-Content -Path "$wpfProjectName\$wpfProjectName.csproj" -Value $certificateConfig
-Add-Content -Path "$consoleProjectName\$consoleProjectName.csproj" -Value $certificateConfig
+REM 14. Generate XML Documentation for Swagger
+for %%i in (%WPF_PROJECT_NAME% %CONSOLE_PROJECT_NAME%) do (
+    echo ^<PropertyGroup^> >> %%i\%%i.csproj
+    echo ^<GenerateDocumentationFile^>true^</GenerateDocumentationFile^> >> %%i\%%i.csproj
+    echo ^</PropertyGroup^> >> %%i\%%i.csproj
+)
 
-# 14. Generate XML Documentation for Swagger
-$xmlDocConfig = @"
-<PropertyGroup>
-  <GenerateDocumentationFile>true</GenerateDocumentationFile>
-</PropertyGroup>
-"@
+dotnet build %SOLUTION_NAME%.sln
 
-Add-Content -Path "$wpfProjectName\$wpfProjectName.csproj" -Value $xmlDocConfig
-Add-Content -Path "$consoleProjectName\$consoleProjectName.csproj" -Value $xmlDocConfig
-
-# Build the projects to generate XML documentation
-dotnet build "$wpfProjectName\$wpfProjectName.csproj"
-dotnet build "$consoleProjectName\$consoleProjectName.csproj"
-
-Write-Output "All tasks completed successfully."
+endlocal
+echo Done.
+pause
 ```
 
-### Explanation:
+**Usage:**
+```
+MyBatchFile.bat MySolution MyWpfApp MyConsoleApp 1.0.0
+```
 
-1. **Create a .NET Solution**: Creates a new solution named `MySolution`.
-2. **Add a WPF Project to the Solution**: Adds a new WPF project named `MyWpfApp` to the solution.
-3. **Add a Console Project to the Solution**: Adds a new console project named `MyConsoleApp` to the solution.
-4. **Add a NuGet Package**: Adds the CSV Helper NuGet package to both projects.
-5. **Clean the Solution**: Cleans the solution to remove build artifacts.
-6. **Restore the NuGet Packages**: Restores NuGet packages for the solution.
-7. **Build the Solution**: Builds the solution.
-8. **Clear the NuGet Cache and Restore Again**: Clears the NuGet cache and restores packages again.
-9. **Rebuild the Solution as x86 or x64**: Rebuilds the solution targeting both x86 and x64.
-10. **Logging the Build Process**: Logs the build output to `build.log`.
-11. **Zip for Distribution**: Compresses the solution's output for distribution.
-12. **Create a Self-Signed Certificate**: Creates a self-signed certificate.
-13. **Link Self-Signed Certificate with Projects**: Adds the certificate to both projects.
-14. **Generate XML Documentation for Swagger**: Configures the projects to generate XML documentation and builds them to produce the documentation files.
-
-Run this PowerShell script in an elevated (administrator) PowerShell prompt to perform all the tasks sequentially.
+This batch file does the following:
+1. Creates a new .NET solution.
+2. Adds a WPF project to the solution.
+3. Adds a console project to the solution.
+4. Adds the CSV Helper NuGet package to both projects.
+5. Cleans the solution.
+6. Restores the NuGet packages.
+7. Builds the solution.
+8. Clears the NuGet cache and restores the packages again.
+9. Rebuilds the solution targeting both x86 and x64.
+10. Logs the build process.
+11. Zips the build output for distribution.
+12. Creates a self-signed certificate.
+13. Links the self-signed certificate with both projects.
+14. Configures the projects to generate XML documentation for Swagger.
