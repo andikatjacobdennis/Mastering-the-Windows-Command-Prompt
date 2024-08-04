@@ -6,8 +6,8 @@ Mastering these advanced Command Prompt commands and batch file programming tech
 
 - Mastering the Windows Command Prompt
   * Section 1: Getting Started with Command Prompt
-    + 1. Understanding and Interpreting Command Prompt
-    + 2. Opening the Command Prompt
+   1. Understanding and Interpreting Command Prompt
+   2. Opening the Command Prompt
     + 3. Running as an Administrator
     + 4. `whoami`: Determining the Logged-in User
     + 5. `cd`: Changing Directories and Navigating the File System
