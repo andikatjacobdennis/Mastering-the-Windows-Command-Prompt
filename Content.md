@@ -117,9 +117,6 @@ Mastering these advanced Command Prompt commands and batch file programming tech
     + [11. **Using Environment Variables**](#11---using-environment-variables--)
     + [12. **Creating a Batch Script for Common Tasks**](#12---creating-a-batch-script-for-common-tasks--)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
-
 ## Section 1: Getting Started with Command Prompt
 
 ### 1. Understanding and Interpreting Command Prompt
