@@ -114,6 +114,7 @@
 - **Example 2:** View details of a specific profile: `netsh wlan show profile name="ProfileName"`.
 
 ### 2. `netsh`: Revealing Saved Network Passwords
+Ensure the Folder Exists: The folder specified in the command must already exist. Create the folder C:\WiFiProfiles if it doesn’t exist before running the command.
 - **Example 1:** Display the password of a saved network: `netsh wlan show profile name="ProfileName" key=clear`.
 - **Example 2:** Export wireless profiles: `netsh wlan export profile folder=C:\WiFiProfiles`.
 
