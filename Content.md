@@ -4,118 +4,119 @@ Mastering these advanced Command Prompt commands and batch file programming tech
 
 > **Note:** Use the command prompt with caution, as some commands can recursively delete files and folders or cause irreparable damage to your PC.
 
-- [Mastering the Windows Command Prompt](#mastering-the-windows-command-prompt)
-  * [Section 1: Getting Started with Command Prompt](#section-1--getting-started-with-command-prompt)
-    + [1. Understanding and Interpreting Command Prompt](#1-understanding-and-interpreting-command-prompt)
-    + [2. Opening the Command Prompt](#2-opening-the-command-prompt)
-    + [3. Running as an Administrator](#3-running-as-an-administrator)
-    + [4. `whoami`: Determining the Logged-in User](#4--whoami---determining-the-logged-in-user)
-    + [5. `cd`: Changing Directories and Navigating the File System](#5--cd---changing-directories-and-navigating-the-file-system)
-    + [6. Using the Up and Down Arrow Keys for Navigating](#6-using-the-up-and-down-arrow-keys-for-navigating)
-    + [7. Changing a Drive in Command Prompt](#7-changing-a-drive-in-command-prompt)
-    + [8. Tab Completion](#8-tab-completion)
-    + [9. Wildcards](#9-wildcards)
-  * [Section 2: Basic Command Prompt Operations](#section-2--basic-command-prompt-operations)
-    + [1. `mkdir`: Creating Directories](#1--mkdir---creating-directories)
-    + [2. `cls`: Clearing the Screen](#2--cls---clearing-the-screen)
-    + [3. `echo`: Displaying Messages and Output](#3--echo---displaying-messages-and-output)
-    + [4. `copy`: Copying Files](#4--copy---copying-files)
-    + [5. `move`: Moving Files](#5--move---moving-files)
-    + [6. `rename`: Renaming Files](#6--rename---renaming-files)
-    + [7. Command Prompt Basics: Navigating and Essential Commands Quiz](#7-command-prompt-basics--navigating-and-essential-commands-quiz)
-  * [Section 3: Advanced Directory Navigation and File Management](#section-3--advanced-directory-navigation-and-file-management)
-    + [1. `dir`: Listing Contents of a Directory](#1--dir---listing-contents-of-a-directory)
-    + [2. Reading `dir` Outputs](#2-reading--dir--outputs)
-    + [3. Creating and Editing Files](#3-creating-and-editing-files)
-    + [4. `rmdir`: Removing Directories](#4--rmdir---removing-directories)
-    + [5. `help`: Accessing Built-in Documentation](#5--help---accessing-built-in-documentation)
-    + [6. `%username%`: Understanding Environmental Variables](#6---username----understanding-environmental-variables)
-    + [7. `explorer`: Opening Directories and Files with Windows Explorer](#7--explorer---opening-directories-and-files-with-windows-explorer)
-    + [8. Section 3 Assessment: Advanced Directory Navigation and Command Functions](#8-section-3-assessment--advanced-directory-navigation-and-command-functions)
-  * [Section 4: Command Prompt Navigation Tips and Tricks](#section-4--command-prompt-navigation-tips-and-tricks)
-    + [1. Navigating Command History Using the Up and Down Arrows](#1-navigating-command-history-using-the-up-and-down-arrows)
-    + [2. Copying and Pasting Within the CMD](#2-copying-and-pasting-within-the-cmd)
-    + [3. `doskey`: Creating Command Aliases](#3--doskey---creating-command-aliases)
-  * [Section 5: Network Commands and Utilities](#section-5--network-commands-and-utilities)
-    + [1. `netsh wlan show profile`: Viewing Wireless Profiles](#1--netsh-wlan-show-profile---viewing-wireless-profiles)
-    + [2. `netsh`: Revealing Saved Network Passwords](#2--netsh---revealing-saved-network-passwords)
-    + [3. `ipconfig`: Viewing and Managing IP Configurations](#3--ipconfig---viewing-and-managing-ip-configurations)
-    + [4. `ipconfig/all`: Listing All Configurations](#4--ipconfig-all---listing-all-configurations)
-    + [5. `ping`: Testing Network Connectivity](#5--ping---testing-network-connectivity)
-    + [6. `tracert`: Tracing the Route of Packets to a Destination](#6--tracert---tracing-the-route-of-packets-to-a-destination)
-    + [7. `tasklist`: Viewing Currently Running Tasks and Processes](#7--tasklist---viewing-currently-running-tasks-and-processes)
-    + [8. `netstat`: Displaying Active Network Connections](#8--netstat---displaying-active-network-connections)
-    + [9. `nslookup`: Querying Domain Name Servers to Obtain Domain Names](#9--nslookup---querying-domain-name-servers-to-obtain-domain-names)
-    + [10. Command Prompt Essentials: Section 5 Quiz](#10-command-prompt-essentials--section-5-quiz)
-  * [Section 6: Disk and File System Management](#section-6--disk-and-file-system-management)
-    + [1. `diskpart`: Managing Partitions on a Hard Drive](#1--diskpart---managing-partitions-on-a-hard-drive)
-    + [2. `robocopy`: A Robust File Copying Tool, Especially for Network Operations](#2--robocopy---a-robust-file-copying-tool--especially-for-network-operations)
-    + [3. `fsutil`: A Versatile Tool for Performing Many NTFS and FAT File System Tasks](#3--fsutil---a-versatile-tool-for-performing-many-ntfs-and-fat-file-system-tasks)
-    + [4. `fsutil`: Special Focus on How to Check Drive Types](#4--fsutil---special-focus-on-how-to-check-drive-types)
-    + [5. `convert`: Converting a Volume's File System](#5--convert---converting-a-volume-s-file-system)
-    + [6. `format`: Formatting a Disk for Use](#6--format---formatting-a-disk-for-use)
-    + [7. `sfc`: Scanning and Fixing System Files](#7--sfc---scanning-and-fixing-system-files)
-    + [8. `defrag`: Defragmenting and Optimizing Drives](#8--defrag---defragmenting-and-optimizing-drives)
-  * [Section 7: Advanced Text and Network Commands](#section-7--advanced-text-and-network-commands)
-    + [1. `findstr`: Advanced Text Searching with Support for Regular Expressions](#1--findstr---advanced-text-searching-with-support-for-regular-expressions)
-    + [2. `net view`: Displaying a List of Computers and Resources Shared on the Network](#2--net-view---displaying-a-list-of-computers-and-resources-shared-on-the-network)
-    + [3. `fc`: Comparing Two Files or Sets of Files and Displaying Differences](#3--fc---comparing-two-files-or-sets-of-files-and-displaying-differences)
-    + [4. `restrui`: Launching the System Restore Utility](#4--restrui---launching-the-system-restore-utility)
-    + [5. `shutdown`: Shutting Down or Restarting a Computer with Various Options](#5--shutdown---shutting-down-or-restarting-a-computer-with-various-options)
-    + [6. `pathping`: Combining the Functionalities of Ping and Tracert](#6--pathping---combining-the-functionalities-of-ping-and-tracert)
-    + [7. `driverquery`: Listing All Installed Device Drivers and Their Properties](#7--driverquery---listing-all-installed-device-drivers-and-their-properties)
-    + [8. `wevtutil`: Querying and Managing Event Logs](#8--wevtutil---querying-and-managing-event-logs)
-    + [9. `cipher`: Encrypting or Decrypting Files and Folders on NTFS Volumes](#9--cipher---encrypting-or-decrypting-files-and-folders-on-ntfs-volumes)
-    + [10. `lodctr`: Updating Registry Values Associated with Windows Performance Counters](#10--lodctr---updating-registry-values-associated-with-windows-performance-counters)
-    + [11. `wbadmin`: Command-line Backup Utility, Focusing on the Backup Command](#11--wbadmin---command-line-backup-utility--focusing-on-the-backup-command)
-    + [12. `runas`: Executing a Tool with Different User Credentials](#12--runas---executing-a-tool-with-different-user-credentials)
-  * [Section 8: Batch File Programming](#section-8--batch-file-programming)
-    + [1. How to Set Name in Batch Files](#1-how-to-set-name-in-batch-files)
-    + [2. Creating Batch Files](#2-creating-batch-files)
-    + [3. Writing Batch Files](#3-writing-batch-files)
-    + [4. User Input](#4-user-input)
-    + [5. If-Else Statements](#5-if-else-statements)
-    + [6. For Loops](#6-for-loops)
-    + [7. While Loops](#7-while-loops)
-    + [8. Functions](#8-functions)
-  * [Section 8: Batch with C#](#section-8--batch-with-c-)
-    + [1. Create a .NET Solution](#1-create-a-net-solution)
-    + [2. Add a WPF Project to the Solution](#2-add-a-wpf-project-to-the-solution)
-    + [3. Add a Console Project to the Solution](#3-add-a-console-project-to-the-solution)
-    + [4. Add a NuGet Package (CSV Helper)](#4-add-a-nuget-package--csv-helper-)
-    + [5. Clean the Solution](#5-clean-the-solution)
-    + [6. Restore the NuGet Packages](#6-restore-the-nuget-packages)
-    + [7. Build the Solution](#7-build-the-solution)
-    + [8. Clear the NuGet Cache and Restore Again](#8-clear-the-nuget-cache-and-restore-again)
-    + [9. Rebuild the Solution as x86 or x64](#9-rebuild-the-solution-as-x86-or-x64)
-    + [10. Logging the Build Process](#10-logging-the-build-process)
-    + [11. Zip for Distribution](#11-zip-for-distribution)
-    + [12. Using 7-Zip for Distribution on Windows](#12-using-7-zip-for-distribution-on-windows)
-      - [1. Install 7-Zip](#1-install-7-zip)
-      - [2. Build the Solution](#2-build-the-solution)
-      - [3. Zip the Output Using 7-Zip](#3-zip-the-output-using-7-zip)
-      - [4. Specify the Output Path](#4-specify-the-output-path)
-      - [Additional Tips](#additional-tips)
-    + [13. Create a Self-Signed Certificate](#13-create-a-self-signed-certificate)
-    + [14. Link Self-Signed Certificate with Projects](#14-link-self-signed-certificate-with-projects)
-    + [15. Generate XML Documentation for Swagger](#15-generate-xml-documentation-for-swagger)
-  * [Section 9: Advanced Batch File Automation with External Tools and Web APIs](#section-9--advanced-batch-file-automation-with-external-tools-and-web-apis)
-    + [1. Using External Tools: Incorporating `curl`](#1-using-external-tools--incorporating--curl-)
-    + [2. Integrating Batch Files with Web APIs](#2-integrating-batch-files-with-web-apis)
-    + [3. Security Considerations](#3-security-considerations)
-  * [Section 10: CMD Secret Tricks](#section-10--cmd-secret-tricks)
-    + [1. **Command History Navigation**](#1---command-history-navigation--)
-    + [2. **Redirecting Output to Clipboard**](#2---redirecting-output-to-clipboard--)
-    + [3. **Using Command Aliases**](#3---using-command-aliases--)
-    + [4. **Running Multiple Commands**](#4---running-multiple-commands--)
-    + [5. **Command Substitution**](#5---command-substitution--)
-    + [6. **Running CMD as Administrator Automatically**](#6---running-cmd-as-administrator-automatically--)
-    + [7. **Using `tasklist` and `taskkill`**](#7---using--tasklist--and--taskkill---)
-    + [8. **Finding Files with `where`**](#8---finding-files-with--where---)
-    + [9. **Scheduling Tasks**](#9---scheduling-tasks--)
-    + [10. **Redirecting Output to Multiple Files**](#10---redirecting-output-to-multiple-files--)
-    + [11. **Using Environment Variables**](#11---using-environment-variables--)
-    + [12. **Creating a Batch Script for Common Tasks**](#12---creating-a-batch-script-for-common-tasks--)
+- Mastering the Windows Command Prompt
+  * Section 1: Getting Started with Command Prompt
+    + 1. Understanding and Interpreting Command Prompt
+    + 2. Opening the Command Prompt
+    + 3. Running as an Administrator
+    + 4. `whoami`: Determining the Logged-in User
+    + 5. `cd`: Changing Directories and Navigating the File System
+    + 6. Using the Up and Down Arrow Keys for Navigating
+    + 7. Changing a Drive in Command Prompt
+    + 8. Tab Completion
+    + 9. Wildcards
+  * Section 2: Basic Command Prompt Operations
+    + 1. `mkdir`: Creating Directories
+    + 2. `cls`: Clearing the Screen
+    + 3. `echo`: Displaying Messages and Output
+    + 4. `copy`: Copying Files
+    + 5. `move`: Moving Files
+    + 6. `rename`: Renaming Files
+    + 7. Command Prompt Basics: Navigating and Essential Commands Quiz
+  * Section 3: Advanced Directory Navigation and File Management
+    + 1. `dir`: Listing Contents of a Directory
+    + 2. Reading `dir` Outputs
+    + 3. Creating and Editing Files
+    + 4. `rmdir`: Removing Directories
+    + 5. `help`: Accessing Built-in Documentation
+    + 6. `%username%`: Understanding Environmental Variables
+    + 7. `explorer`: Opening Directories and Files with Windows Explorer
+    + 8. Section 3 Assessment: Advanced Directory Navigation and Command Functions
+  * Section 4: Command Prompt Navigation Tips and Tricks
+    + 1. Navigating Command History Using the Up and Down Arrows
+    + 2. Copying and Pasting Within the CMD
+    + 3. `doskey`: Creating Command Aliases
+  * Section 5: Network Commands and Utilities
+    + 1. `netsh wlan show profile`: Viewing Wireless Profiles
+    + 2. `netsh`: Revealing Saved Network Passwords
+    + 3. `ipconfig`: Viewing and Managing IP Configurations
+    + 4. `ipconfig/all`: Listing All Configurations
+    + 5. `ping`: Testing Network Connectivity
+    + 6. `tracert`: Tracing the Route of Packets to a Destination
+    + 7. `tasklist`: Viewing Currently Running Tasks and Processes
+    + 8. `netstat`: Displaying Active Network Connections
+    + 9. `nslookup`: Querying Domain Name Servers to Obtain Domain Names
+    + 10. Command Prompt Essentials: Section 5 Quiz
+  * Section 6: Disk and File System Management
+    + 1. `diskpart`: Managing Partitions on a Hard Drive
+    + 2. `robocopy`: A Robust File Copying Tool, Especially for Network Operations
+    + 3. `fsutil`: A Versatile Tool for Performing Many NTFS and FAT File System Tasks
+    + 4. `fsutil`: Special Focus on How to Check Drive Types
+    + 5. `convert`: Converting a Volume's File System
+    + 6. `format`: Formatting a Disk for Use
+    + 7. `sfc`: Scanning and Fixing System Files
+    + 8. `defrag`: Defragmenting and Optimizing Drives
+  * Section 7: Advanced Text and Network Commands
+    + 1. `findstr`: Advanced Text Searching with Support for Regular Expressions
+    + 2. `net view`: Displaying a List of Computers and Resources Shared on the Network
+    + 3. `fc`: Comparing Two Files or Sets of Files and Displaying Differences
+    + 4. `restrui`: Launching the System Restore Utility
+    + 5. `shutdown`: Shutting Down or Restarting a Computer with Various Options
+    + 6. `pathping`: Combining the Functionalities of Ping and Tracert
+    + 7. `driverquery`: Listing All Installed Device Drivers and Their Properties
+    + 8. `wevtutil`: Querying and Managing Event Logs
+    + 9. `cipher`: Encrypting or Decrypting Files and Folders on NTFS Volumes
+    + 10. `lodctr`: Updating Registry Values Associated with Windows Performance Counters
+    + 11. `wbadmin`: Command-line Backup Utility, Focusing on the Backup Command
+    + 12. `runas`: Executing a Tool with Different User Credentials
+  * Section 8: Batch File Programming
+    + 1. How to Set Name in Batch Files
+    + 2. Creating Batch Files
+    + 3. Writing Batch Files
+    + 4. User Input
+    + 5. If-Else Statements
+    + 6. For Loops
+    + 7. While Loops
+    + 8. Functions
+  * Section 8: Batch with C#
+    + 1. Create a .NET Solution
+    + 2. Add a WPF Project to the Solution
+    + 3. Add a Console Project to the Solution
+    + 4. Add a NuGet Package (CSV Helper)
+    + 5. Clean the Solution
+    + 6. Restore the NuGet Packages
+    + 7. Build the Solution
+    + 8. Clear the NuGet Cache and Restore Again
+    + 9. Rebuild the Solution as x86 or x64
+    + 10. Logging the Build Process
+    + 11. Zip for Distribution
+    + 12. Using 7-Zip for Distribution on Windows
+      - 1. Install 7-Zip
+      - 2. Build the Solution
+      - 3. Zip the Output Using 7-Zip
+      - 4. Specify the Output Path
+      - Additional Tips
+    + 13. Create a Self-Signed Certificate
+    + 14. Link Self-Signed Certificate with Projects
+    + 15. Generate XML Documentation for Swagger
+  * Section 9: Advanced Batch File Automation with External Tools and Web APIs
+    + 1. Using External Tools: Incorporating `curl`
+    + 2. Integrating Batch Files with Web APIs
+    + 3. Security Considerations
+  * Section 10: CMD Secret Tricks
+    + 1. Command History Navigation
+    + 2. Redirecting Output to Clipboard
+    + 3. Using Command Aliases
+    + 4. Running Multiple Commands
+    + 5. Command Substitution
+    + 6. Running CMD as Administrator Automatically
+    + 7. Using `tasklist` and `taskkill`
+    + 8. Finding Files with `where`
+    + 9. Scheduling Tasks
+    + 10. Redirecting Output to Multiple Files
+    + 11. Using Environment Variables
+    + 12. Creating a Batch Script for Common Tasks
+
 
 ## Section 1: Getting Started with Command Prompt
 
