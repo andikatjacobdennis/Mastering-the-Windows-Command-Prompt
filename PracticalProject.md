@@ -1,4 +1,4 @@
-Certainly! Below is a practical CMD batch file that performs all the tasks you've mentioned. This batch file takes various inputs as parameters and executes the necessary commands for each step.
+Below is a practical CMD batch file that performs all the tasks. This batch file takes various inputs as parameters and executes the necessary commands for each step.
 
 ```batch
 @echo off
