@@ -1,104 +1,102 @@
-Below is a practical CMD batch file that performs all the tasks. This batch file takes various inputs as parameters and executes the necessary commands for each step.
+Here is the complete batch script code with explanations:
 
 ```batch
 @echo off
 setlocal
 
-REM Check if the correct number of parameters are passed
-if "%~1"=="" (
-    echo Usage: %0 SolutionName WpfProjectName ConsoleProjectName Version
-    exit /b 1
+:: Check for administrative rights
+openfiles >nul 2>&1
+if %errorlevel% neq 0 (
+    echo This script requires administrative rights. Please run it as an administrator.
+    pause
+    exit /b
 )
 
-REM Parameters
-set SOLUTION_NAME=%~1
-set WPF_PROJECT_NAME=%~2
-set CONSOLE_PROJECT_NAME=%~3
-set VERSION=%~4
+:: Get the input parameters
+set "SolutionName=%1"
+set "WpfAppName=%2"
+set "ConsoleAppName=%3"
+set "Version=%4"
+set "SolutionFolder=Solution"
+set "CompanyName=YourCompanyName"
+set "ProductName=YourProductName"
 
-REM 1. Create a .NET Solution
-dotnet new sln -n %SOLUTION_NAME%
-cd %SOLUTION_NAME%
+:: Paths to tools
+set "MakeCertPath=C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x86\makecert.exe"
+set "Pvk2PfxPath=C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x86\pvk2pfx.exe"
+set "SignToolPath=C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x86\signtool.exe"
 
-REM 2. Add a WPF Project to the Solution
-dotnet new wpf -n %WPF_PROJECT_NAME%
-dotnet sln add %WPF_PROJECT_NAME%\%WPF_PROJECT_NAME%.csproj
+:: Create the solution folder
+mkdir "%SolutionFolder%"
 
-REM 3. Add a Console Project to the Solution
-dotnet new console -n %CONSOLE_PROJECT_NAME%
-dotnet sln add %CONSOLE_PROJECT_NAME%\%CONSOLE_PROJECT_NAME%.csproj
+:: Navigate to the solution folder
+cd "%SolutionFolder%"
 
-REM 4. Add a NuGet Package (CSV Helper)
-dotnet add %WPF_PROJECT_NAME%\%WPF_PROJECT_NAME%.csproj package CsvHelper
-dotnet add %CONSOLE_PROJECT_NAME%\%CONSOLE_PROJECT_NAME%.csproj package CsvHelper
+:: Create the solution
+dotnet new sln -n "%SolutionName%"
+dotnet new wpf -n "%WpfAppName%"
+dotnet new console -n "%ConsoleAppName%"
 
-REM 5. Clean the Solution
-dotnet clean %SOLUTION_NAME%.sln
+:: Add projects to the solution
+dotnet sln "%SolutionName%.sln" add "%WpfAppName%\%WpfAppName%.csproj"
+dotnet sln "%SolutionName%.sln" add "%ConsoleAppName%\%ConsoleAppName%.csproj"
 
-REM 6. Restore the NuGet Packages
-dotnet restore %SOLUTION_NAME%.sln
+:: Restore the projects
+dotnet restore "%WpfAppName%\%WpfAppName%.csproj"
+dotnet restore "%ConsoleAppName%\%ConsoleAppName%.csproj"
 
-REM 7. Build the Solution
-dotnet build %SOLUTION_NAME%.sln
+:: Build the solution
+dotnet build "%SolutionName%.sln"
 
-REM 8. Clear the NuGet Cache and Restore Again
+:: Clear the NuGet cache
 dotnet nuget locals all --clear
-dotnet restore %SOLUTION_NAME%.sln
 
-REM 9. Rebuild the Solution as x86 and x64
-dotnet build %SOLUTION_NAME%.sln -r win-x86
-dotnet build %SOLUTION_NAME%.sln -r win-x64
+:: Create a self-signed certificate with details
+set "CertSubject=CN=%ProductName%, O=%CompanyName%, L=YourCity, S=YourState, C=YourCountry"
+"%MakeCertPath%" -r -pe -n "%CertSubject%" -b 01/01/2023 -e 01/01/2033 -sv MyCertificate.pvk MyCertificate.cer
 
-REM 10. Logging the Build Process
-dotnet build %SOLUTION_NAME%.sln > build.log
+:: Convert the certificate to PFX format
+"%Pvk2PfxPath%" -pvk MyCertificate.pvk -spc MyCertificate.cer -pfx MyCertificate.pfx -po password
 
-REM 11. Zip for Distribution
-set ZIP_NAME=%SOLUTION_NAME%_%DATE:~10,4%%DATE:~4,2%%DATE:~7,2%_%TIME:~0,2%%TIME:~3,2%%TIME:~6,2%_v%VERSION%.tar.gz
-tar -cvzf %ZIP_NAME% %SOLUTION_NAME%\bin\Release
+:: Sign the projects with the certificate
+"%SignToolPath%" sign /f "MyCertificate.pfx" /p password /t http://timestamp.digicert.com /fd sha256 "%WpfAppName%\bin\Debug\net8.0-windows\%WpfAppName%.dll"
+"%SignToolPath%" sign /f "MyCertificate.pfx" /p password /t http://timestamp.digicert.com /fd sha256 "%ConsoleAppName%\bin\Debug\net8.0\%ConsoleAppName%.dll"
 
-REM 12. Create a Self-Signed Certificate
-dotnet dev-certs https -ep ./MyCert.pfx -p password
+:: Navigate back to the original folder
+cd ..
 
-REM 13. Link Self-Signed Certificate with Projects
-for %%i in (%WPF_PROJECT_NAME% %CONSOLE_PROJECT_NAME%) do (
-    echo ^<ItemGroup^> >> %%i\%%i.csproj
-    echo ^<None Update="MyCert.pfx"^> >> %%i\%%i.csproj
-    echo ^<CopyToOutputDirectory^>PreserveNewest^</CopyToOutputDirectory^> >> %%i\%%i.csproj
-    echo ^</None^> >> %%i\%%i.csproj
-    echo ^</ItemGroup^> >> %%i\%%i.csproj
+:: Compress the solution directory
+if exist "%SolutionFolder%" (
+    "C:\Program Files\7-Zip\7z.exe" a -tzip "%SolutionName%_%Version%.zip" "%SolutionFolder%\*"
+) else (
+    echo Error: The path '%SolutionFolder%' does not exist.
 )
 
-REM 14. Generate XML Documentation for Swagger
-for %%i in (%WPF_PROJECT_NAME% %CONSOLE_PROJECT_NAME%) do (
-    echo ^<PropertyGroup^> >> %%i\%%i.csproj
-    echo ^<GenerateDocumentationFile^>true^</GenerateDocumentationFile^> >> %%i\%%i.csproj
-    echo ^</PropertyGroup^> >> %%i\%%i.csproj
-)
-
-dotnet build %SOLUTION_NAME%.sln
-
-endlocal
 echo Done.
+endlocal
 pause
 ```
 
-**Usage:**
-```
-MyBatchFile.bat MySolution MyWpfApp MyConsoleApp 1.0.0
-```
+### Instructions for Setting Up the Environment
 
-This batch file does the following:
-1. Creates a new .NET solution.
-2. Adds a WPF project to the solution.
-3. Adds a console project to the solution.
-4. Adds the CSV Helper NuGet package to both projects.
-5. Cleans the solution.
-6. Restores the NuGet packages.
-7. Builds the solution.
-8. Clears the NuGet cache and restores the packages again.
-9. Rebuilds the solution targeting both x86 and x64.
-10. Logs the build process.
-11. Zips the build output for distribution.
-12. Creates a self-signed certificate.
-13. Links the self-signed certificate with both projects.
-14. Configures the projects to generate XML documentation for Swagger.
+1. **Install .NET SDK**:
+   - Download and install the .NET SDK from the [.NET website](https://dotnet.microsoft.com/download).
+
+2. **Install Required Tools**:
+   - **Windows SDK**: Ensure you have the Windows SDK installed to get `makecert.exe`, `pvk2pfx.exe`, and `signtool.exe`. Install it from the [Microsoft website](https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/).
+   - **7-Zip**: Download and install [7-Zip](https://www.7-zip.org/).
+
+3. **Modify the Script**:
+   - Update the paths for `MakeCertPath`, `Pvk2PfxPath`, `SignToolPath`, and `7-Zip` according to where these tools are installed on your machine.
+
+4. **Run the Script**:
+   - Save the batch script as `setup.bat` or another desired name.
+   - Open Command Prompt as an Administrator.
+   - Navigate to the directory where the batch script is saved.
+   - Execute the script with the required parameters:
+     ```batch
+     setup.bat SolutionName WpfAppName ConsoleAppName Version
+     ```
+   - Replace `SolutionName`, `WpfAppName`, `ConsoleAppName`, and `Version` with your specific values.
+
+This script automates the process of creating and configuring a .NET solution with a WPF and console application, signing the assemblies, and packaging the solution for distribution.
