@@ -587,15 +587,53 @@ Running this command will close all Chrome instances and any related processes. 
   tar -cvzf MySolution_$(date +%Y%m%d_%H%M%S)_v1.0.0.tar.gz MySolution/bin/Release
   ```
   Specify the output path as needed.
+  
+### 12. Using 7-Zip for Distribution on Windows
 
-### 12. Create a Self-Signed Certificate
+If `zip` is not available, you can use 7-Zip to create zip files. Here’s how to zip your built solution for distribution using 7-Zip on Windows:
+
+#### 1. Install 7-Zip
+
+1. Download and install [7-Zip](https://www.7-zip.org/).
+
+#### 2. Build the Solution
+
+Ensure your .NET solution is built and the output is available in the specified directory (e.g., `MySolution\bin\Release`).
+
+#### 3. Zip the Output Using 7-Zip
+
+1. Open Command Prompt.
+
+2. Use the following command to create a zip file with the date, time, and version in the filename:
+
+   ```cmd
+   "C:\Program Files\7-Zip\7z.exe" a -tzip MySolution_%date:~10,4%%date:~4,2%%date:~7,2%_%time:~0,2%%time:~3,2%_v1.0.0.zip MySolution\bin\Release
+   ```
+
+   - `a`: Add files to the archive.
+   - `-tzip`: Specify the zip format.
+
+#### 4. Specify the Output Path
+
+To specify a different output path, include the full path in the filename:
+
+```cmd
+"C:\Program Files\7-Zip\7z.exe" a -tzip C:\path\to\output\MySolution_%date:~10,4%%date:~4,2%%date:~7,2%_%time:~0,2%%time:~3,2%_v1.0.0.zip C:\path\to\MySolution\bin\Release
+```
+
+#### Additional Tips
+
+- **Date and Time Format**: Adjust the date and time format in `%date%` and `%time%` as needed.
+- **Versioning**: Update the version number (`v1.0.0`) to reflect the version of your solution.
+
+### 13. Create a Self-Signed Certificate
 **Instructions to create a self-signed certificate:**
 - Run the following command:
   ```bash
   dotnet dev-certs https -ep ./MyCert.pfx -p password
   ```
 
-### 13. Link Self-Signed Certificate with Projects
+### 14. Link Self-Signed Certificate with Projects
 **Steps to link the self-signed certificate with the WPF and console projects:**
 - Update the project files (`.csproj`) to include the certificate:
   ```xml
@@ -607,7 +645,7 @@ Running this command will close all Chrome instances and any related processes. 
   ```
 - Configure the projects to use the certificate.
 
-### 14. Generate XML Documentation for Swagger
+### 15. Generate XML Documentation for Swagger
 **Instructions to generate XML documentation for Swagger:**
 - Update the project files (`.csproj`) to generate XML documentation:
   ```xml
