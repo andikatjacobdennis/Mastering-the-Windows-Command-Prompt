@@ -99,11 +99,6 @@ Mastering these advanced Command Prompt commands and batch file programming tech
 2. **Question Mark (?)**: Matches a single character.
    - Example: `file?.txt` matches `file1.txt`, `fileA.txt`, but not `file10.txt`.
 
-- **Additional Tips**:
-  - **Escaping Wildcards**: Use caret (`^`) to escape.
-    ```shell
-    echo file^*.txt
-    ```
 ## Section 2: Basic Command Prompt Operations
 
 ### 1. `mkdir`: Creating Directories
